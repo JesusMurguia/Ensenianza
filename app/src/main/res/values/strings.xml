@@ -25,18 +25,6 @@
     <string name="buscar">  Buscar</string>
     <string name="clases">Clases</string>
     <string name="mensajes">Mensajes</string>
-    <string name="chatGrupal">Chat </string>
-    <string name="chatGrupal2">Grupal </string>
-    <string name="pendientes">Tenemos algunos pendientes </string>
-    <string name="TareaUrg">Tarea 1 </string>
-    <string name="TareaNormal">Tarea 2 </string>
-    <string name="Tarea">Tarea 3 </string>
-    <string name="Entregas_Tarea">Entregas de Parcial </string>
-    <string name="Clases_grabadas">Clases Grabadas </string>
-    <string name="videos_asesoria">Videos de asesoría</string>
-
-    <string name="Geografia">Geografía</string>
-    <string name="MtraGeografia">Mtra. Ana Marquez</string>
 
     <string name="clasesGrabadas">Clases Grabadas</string>
     <string name="recordar">Recordar Usuario</string>
