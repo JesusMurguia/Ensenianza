@@ -37,8 +37,9 @@ class PantallaPrincipal : AppCompatActivity() {
         //asignar layout al recycler view
         recycler.layoutManager = layoutManager;
         recycler.adapter = RecyclerAdapter(clases,View.OnClickListener {
-            Toast.makeText(applicationContext,"has seleccionado la clase: "+clases.get(recycler.getChildAdapterPosition(it)).nombreClase,Toast.LENGTH_SHORT).show();
-
+           Toast.makeText(applicationContext,"has seleccionado la claseeeee: "+clases.get(recycler.getChildAdapterPosition(it)).nombreClase,Toast.LENGTH_SHORT).show();
+            var intent= Intent(this, PantallaClaseDetalle::class.java)
+            startActivity(intent)
         });
         recycler.itemAnimator = DefaultItemAnimator();
 

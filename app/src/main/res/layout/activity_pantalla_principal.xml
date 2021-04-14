@@ -208,6 +208,27 @@
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+                            android:id="@+id/floatingActionButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="15dp"
+
+
+                            android:backgroundTint="@color/white"
+                            android:src="@drawable/massnfondo"
+                            app:fabSize="mini" />
+
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
@@ -327,24 +348,4 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-
-
-            android:backgroundTint="@color/white"
-            android:src="@drawable/massnfondo"
-            app:fabSize="mini" />
-
-    </RelativeLayout>
 </RelativeLayout>

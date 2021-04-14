@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2FAC66">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="409dp"
+        android:layout_height="181dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconoClaseGeografia"
+        app:srcCompat="@drawable/mountain" />
+
+    <ImageView
+        android:id="@+id/iconoClaseGeografia"
+        android:layout_width="102dp"
+        android:layout_height="114dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/geografiawhite" />
+
+    <TextView
+        android:id="@+id/textMateriaGeografia"
+        android:layout_width="175dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/Geografia"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconoClaseGeografia" />
+
+    <TextView
+        android:id="@+id/textMtraGeografia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_extralight"
+        android:text="@string/MtraGeografia"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMateriaGeografia" />
+
+    <TextView
+        android:id="@+id/textTutorAlumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/gotham_bold"
+        android:text="@string/nombreResponsable"
+        android:textColor="#FBFAFA"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tareaUrgenteBttn"
+        android:layout_width="376dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/TareaUrg"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:chipBackgroundColor="#FF1313"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPendientes" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tareaNormalBttn"
+        android:layout_width="376dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F28B00"
+        android:backgroundTint="#FFF28B00"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/TareaNormal"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tareaUrgenteBttn" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tareaBttn"
+        android:layout_width="376dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#F7E439"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/Tarea"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tareaNormalBttn" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="318dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/Entregas_Tarea"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tareaBttn" />
+
+    <ImageButton
+        android:id="@+id/bttnClasesGrabadas"
+        android:layout_width="100dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:srcCompat="@drawable/clasewhite" />
+
+    <TextView
+        android:id="@+id/textPendientes"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_bold"
+        android:text="@string/pendientes"
+        android:textAlignment="center"
+        android:textColor="#FBFAFA"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTutorAlumno" />
+
+    <TextView
+        android:id="@+id/textClasesGrabadas"
+        android:layout_width="103dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="60dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/Clases_grabadas"
+        android:textAlignment="center"
+        android:textColor="#FBFAFA"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnClasesGrabadas" />
+
+    <ImageButton
+        android:id="@+id/bttnAsesoria"
+        android:layout_width="100dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="80dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:srcCompat="@drawable/videoasesoriaswhite" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="157dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="54dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/videos_asesoria"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnAsesoria" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
