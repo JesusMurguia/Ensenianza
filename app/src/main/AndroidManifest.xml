@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enseñanza">
+
         <activity android:name=".PantallaEntregarAsignacion"></activity>
         <activity android:name=".PantallaClaseDetalle" />
+
         <activity android:name=".PantallaVideo" />
         <activity android:name=".PantallaRecordarUsuario" />
         <activity android:name=".PantallaTutoriales" />
@@ -28,20 +30,14 @@
         <activity android:name=".PantallaConectar" />
         <activity android:name=".PantallaLogin_2" />
         <activity android:name=".PantallaRegistrate" />
+        <activity android:name=".PantallaMenu"/>
         <activity android:name=".PantallaLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

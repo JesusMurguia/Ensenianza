@@ -63,10 +63,7 @@ class PantallaPrincipal : AppCompatActivity() {
         prin_btn_claseGrabadas.setOnClickListener() {
             startActivity(Intent(this, PantallaClasesGrabadas::class.java))
         }
-//llevar al menu
-        prin_btnMenu.setOnClickListener() {
-            startActivity(Intent(this, PantallaClases::class.java))
-        }
+
 
         //levarte ala pantlla donde se encuentran las tareas
         prin_btn_tareas.setOnClickListener() {
@@ -78,12 +75,23 @@ class PantallaPrincipal : AppCompatActivity() {
             startActivity(Intent(this, PantallaTutoriales::class.java))
         }
 
+          //mensajes
+        prin_btn_mensajes.setOnClickListener {
+            startActivity(Intent(this, PantallaMensajes::class.java))
+        }
 
-
+        cardView2.setOnClickListener {
+            startActivity(Intent(this, PantallaPerfil::class.java))
+        }
 
         //levarte donde estan las tareas
         print_recycler_view_clases.setOnClickListener() {
             startActivity(Intent(this, PantallaTutoriales::class.java))
+        }
+
+        //menu
+        prin_btnMenu.setOnClickListener {
+            startActivity(Intent(this, PantallaMenu::class.java))
         }
 
     }
@@ -107,6 +115,8 @@ class PantallaPrincipal : AppCompatActivity() {
         tutoriales.add(Tutorial("Matematicas", "Integrales", R.drawable.thumbnail5))
         tutoriales.add(Tutorial("Geografia", "Nacionalidades", R.drawable.thumbnail4))
     }
+
+
 
 
 }
