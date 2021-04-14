@@ -63,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:elevation="10dp"
+
                     app:cardCornerRadius="15dp">
 
 
@@ -143,6 +144,7 @@
                     android:id="@+id/prin_btn_mensajes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_gravity="center_horizontal">
 
                     <ImageView
