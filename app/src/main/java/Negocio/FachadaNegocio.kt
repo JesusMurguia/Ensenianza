@@ -1,6 +1,8 @@
 package Negocio
 
 
+import Dominio.Alumno
+import Dominio.Tutor
 import android.content.Context
 
 class FachadaNegocio:iNegocio {
@@ -15,6 +17,17 @@ class FachadaNegocio:iNegocio {
 
     override fun subirTarea(): Boolean {
         TODO("Not yet implemented")
+    }
+
+    override fun registrarTutor(tutor:Tutor) {
+        var negocio:CtrlTutor  = CtrlTutor();
+        negocio.registrarTutor(tutor)
+    }
+
+    override fun registrarAlumno(alumno: Alumno):String? {
+        var negocioAlumno:CtrlAlumno  = CtrlAlumno();
+       return negocioAlumno.registrarAlumno(alumno)
+
     }
 
 }

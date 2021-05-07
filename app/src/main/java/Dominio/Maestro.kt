@@ -5,6 +5,6 @@ import java.util.*
 class Maestro(
     nombre: String?,
     apellido: String?,
-    conversacionesUsuarios: ArrayList<ConversacionUsuario>,
+    email:String?,
     var materiasMaestros: ArrayList<MateriaMaestro>
-) : Usuario(nombre, apellido, conversacionesUsuarios)
+) : Usuario(nombre, apellido, email)
