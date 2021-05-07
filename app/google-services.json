@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "174276555644",
+    "firebase_url": "https://ensenianza-default-rtdb.firebaseio.com",
+    "project_id": "ensenianza",
+    "storage_bucket": "ensenianza.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174276555644:android:623056f6b58664f8f9aaf9",
+        "android_client_info": {
+          "package_name": "apps.moviles.ensenianza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174276555644-pmbvcus540go2d5gleef92al6btghj8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "apps.moviles.ensenianza",
+            "certificate_hash": "b16cbe4f55e02a8225828be04f2bdf00962ee4e7"
+          }
+        },
+        {
+          "client_id": "174276555644-l557frfq1dp5o16i4fcdibf0f3iid96o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTrqRhhiapewzxg6oM6PgA_G8cxizuDpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174276555644-l557frfq1dp5o16i4fcdibf0f3iid96o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
