@@ -3,7 +3,10 @@ package Negocio
 
 import Dominio.Alumno
 import Dominio.Tutor
+import android.app.Activity
 import android.content.Context
+import apps.moviles.enseanza.PantallaRegistrate
+import java.util.Observable
 
 class FachadaNegocio:iNegocio {
     override fun iniciarSesion(context: Context?, usuario: String?, contrasenia: String?): Boolean? {
@@ -19,12 +22,12 @@ class FachadaNegocio:iNegocio {
         TODO("Not yet implemented")
     }
 
-    override fun registrarTutor(tutor:Tutor) {
+    override fun registrarTutor(activity:PantallaRegistrate,tutor:Tutor,password:String?):Boolean?{
         var negocio:CtrlTutor  = CtrlTutor();
-        negocio.registrarTutor(tutor)
+       return negocio.registrarTutor(activity,tutor,password)
     }
 
-    override fun registrarAlumno(alumno: Alumno):String? {
+    override fun registrarAlumno(alumno: Alumno?):String? {
         var negocioAlumno:CtrlAlumno  = CtrlAlumno();
        return negocioAlumno.registrarAlumno(alumno)
 

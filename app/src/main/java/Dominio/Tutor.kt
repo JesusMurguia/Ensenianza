@@ -6,7 +6,7 @@ class Tutor : Usuario {
     var alumno: Alumno? = null
 
 
-    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno?,conversacionesUsuarios: ArrayList<ConversacionUsuario>?) : super(
+    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno,conversacionesUsuarios: ArrayList<ConversacionUsuario>?) : super(
         nombre,
         apellido,
         email,
@@ -14,7 +14,7 @@ class Tutor : Usuario {
     ) {
         this.alumno = alumno
     }
-    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno?) : super(
+    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno) : super(
         nombre,
         apellido,
         email
