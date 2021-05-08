@@ -22,38 +22,7 @@ class CtrlTutor:Observable {
 
     }
 
-    fun iniciarSesion(activity: PantallaLogin_2, tutor:Tutor){
 
-        var isSuccessful: Boolean? = false;
-
-        //--registrat usuario en auth firebase
-        var mAuth: FirebaseAuth;
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
-        mAuth.signInWithEmailAndPassword(tutor.email, tutor.password)
-            .addOnCompleteListener(activity) { task ->
-                if (task.isSuccessful) {
-
-                    val user = mAuth.currentUser
-                    isSuccessful=true
-                    Toast.makeText(activity, "Ha Iniciado Sesion Correctamente", Toast.LENGTH_SHORT).show();
-
-                    //patron observer
-                    setChanged();
-                    notifyObservers(isSuccessful);
-                    clearChanged();
-                } else {
-                    // If sign in fails, display a message to the user.
-
-                    Toast.makeText(activity, "password o correo estan incorrectos", Toast.LENGTH_SHORT).show()
-
-                }
-            }
-
-
-    }
 
     fun cerrarSesion(): Boolean {
         return true

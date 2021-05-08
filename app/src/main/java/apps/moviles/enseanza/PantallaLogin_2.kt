@@ -1,6 +1,7 @@
 package apps.moviles.enseanza
 
 import Dominio.Tutor
+import Dominio.Usuario
 import Negocio.Factory
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -39,9 +40,9 @@ class PantallaLogin_2 : AppCompatActivity(),Observer {
 
 
             //object
-            var tutor= Tutor(ediTextEmail.text.toString(),ediTextPassword.text.toString());
+            var usuario= Usuario(ediTextEmail.text.toString(),ediTextPassword.text.toString());
 
-            fachadaNegocio.iniciarSesion(this,tutor);
+            fachadaNegocio.iniciarSesionUsuario(this,usuario);
         }
     }
 

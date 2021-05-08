@@ -4,6 +4,7 @@ package Negocio
 import Dominio.Alumno
 import Dominio.Maestro
 import Dominio.Tutor
+import Dominio.Usuario
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -15,10 +16,12 @@ import apps.moviles.enseanza.PantallaRegistrate
 import java.util.*
 
 class FachadaNegocio:iNegocio,java.util.Observer, Observable() {
-    override fun iniciarSesion(activity:PantallaLogin_2,tutor:Tutor) {
-        var negocio:CtrlTutor  = CtrlTutor();
+
+
+    override fun iniciarSesionUsuario(activity: PantallaLogin_2, usuario: Usuario) {
+        var negocio:CtrlUsuario  = CtrlUsuario();
         negocio.addObserver(this);
-         negocio.iniciarSesion(activity,tutor);
+        negocio.iniciarSesionUsuario(activity,usuario);
     }
 
     override fun cerrarSesion(): Boolean {
