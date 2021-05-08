@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/verdeLima"
+    tools:context=".PantallaRegistrarteOptions">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+
+        android:layout_marginBottom="452dp"
+        android:fontFamily="@font/gotham_bold"
+        android:shadowColor="@color/grisTexto"
+
+        android:shadowDx="3.5"
+        android:shadowDy="2.3"
+        android:shadowRadius="1.6"
+
+
+        android:text="@string/mensaje_options"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.120000005"></TextView>
+
+    <ImageButton
+        android:id="@+id/options_btnPadres"
+        android:layout_width="105dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="70dp"
+        android:background="#0000"
+        android:scaleType="centerInside"
+        android:src="@drawable/padre"
+        android:tooltipText="@string/padretutor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"></ImageButton>
+
+    <ImageButton
+        android:id="@+id/options_btnProfesor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="80dp"
+        android:background="#0000"
+        android:src="@drawable/profesorwhite"
+
+        android:tooltipText="@string/padretutor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"></ImageButton>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/profesor"
+        android:textColor="@color/grisTexto"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistro"
+        app:layout_constraintEnd_toEndOf="@+id/options_btnProfesor"
+        app:layout_constraintStart_toStartOf="@+id/options_btnProfesor"
+        app:layout_constraintTop_toBottomOf="@+id/options_btnProfesor"
+        app:layout_constraintVertical_bias="0.0"></TextView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="115dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/padretutor"
+        android:textColor="@color/grisTexto"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistro"
+        app:layout_constraintEnd_toEndOf="@+id/options_btnPadres"
+        app:layout_constraintStart_toStartOf="@+id/options_btnPadres"
+        app:layout_constraintTop_toBottomOf="@+id/options_btnPadres"
+        app:layout_constraintVertical_bias="0.0"></TextView>
+
+
+
+    <ImageButton
+        android:id="@+id/btnHome"
+        android:layout_width="@dimen/homeButtonWidth"
+        android:layout_height="@dimen/homeButtonWidth"
+        android:background="@color/boton"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:srcCompat="@drawable/logoconopacidad" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

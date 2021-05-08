@@ -17,9 +17,9 @@ import java.util.*
 
 class CtrlTutor:Observable {
 
-    //  private var accesoDatos:FachadaDatos;
+
     constructor() {
-        //   accesoDatos=FabricaDatos.crearFachadaDatos();
+
     }
 
     fun iniciarSesion(activity: PantallaLogin_2, tutor:Tutor){
@@ -87,6 +87,7 @@ class CtrlTutor:Observable {
                     if (task.isSuccessful) {
 
                         val user = mAuth.currentUser
+
 
                         Toast.makeText(
                             activity,

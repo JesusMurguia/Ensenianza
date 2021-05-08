@@ -6,10 +6,6 @@ import Negocio.Factory
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_pantalla_login.*
-import kotlinx.android.synthetic.main.activity_pantalla_login.btnRegistro
-import kotlinx.android.synthetic.main.activity_pantalla_login_2.*
 import kotlinx.android.synthetic.main.activity_pantalla_registrate.*
 import java.util.*
 
@@ -25,7 +21,7 @@ class PantallaRegistrate : AppCompatActivity(),Observer {
         fachadaNegocio.addObserver(this);
 
 
-        btnRegistrate.setOnClickListener(){
+        btnRegistrate_maestro.setOnClickListener(){
 
             //obtener alumno
             var alumno=Alumno("hijoAdmin","apeelidoAdmin")

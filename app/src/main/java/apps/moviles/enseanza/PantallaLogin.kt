@@ -32,7 +32,7 @@ class PantallaLogin : AppCompatActivity() {
             startActivity(Intent(this, PantallaLogin_2::class.java))
         }
         btnRegistro.setOnClickListener() {
-            startActivity(Intent(this, PantallaRegistrate::class.java))
+            startActivity(Intent(this, PantallaRegistrarteOptions::class.java))
         }
         btnHome.setOnClickListener() {
             startActivity(Intent(this, PantallaVideo::class.java))
