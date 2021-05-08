@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import apps.moviles.enseanza.PantallaLogin_2
 import apps.moviles.enseanza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
@@ -21,10 +22,36 @@ class CtrlTutor:Observable {
         //   accesoDatos=FabricaDatos.crearFachadaDatos();
     }
 
-    fun iniciarSesion(context: Context?, usuario: String?, password: String?): Boolean? {
+    fun iniciarSesion(activity: PantallaLogin_2, tutor:Tutor){
 
-        // var token= accesoDatos.iniciarSesion(context,usuario,password);
-        return true;
+        var isSuccessful: Boolean? = false;
+
+        //--registrat usuario en auth firebase
+        var mAuth: FirebaseAuth;
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.signInWithEmailAndPassword(tutor.email, tutor.password)
+            .addOnCompleteListener(activity) { task ->
+                if (task.isSuccessful) {
+
+                    val user = mAuth.currentUser
+                    isSuccessful=true
+                    Toast.makeText(activity, "Ha Iniciado Sesion Correctamente", Toast.LENGTH_SHORT).show();
+
+                    //patron observer
+                    setChanged();
+                    notifyObservers(isSuccessful);
+                    clearChanged();
+                } else {
+                    // If sign in fails, display a message to the user.
+
+                    Toast.makeText(activity, "password o correo estan incorrectos", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
 
     }
 
@@ -36,11 +63,10 @@ class CtrlTutor:Observable {
         return true
     }
 
-    fun registrarTutor(activity: PantallaRegistrate, tutor: Tutor, password: String?): Boolean? {
+    fun registrarTutor(activity: PantallaRegistrate, tutor: Tutor) {
 
 
-        //agregar observer
-        addObserver(activity);
+
 
         var isSuccessful: Boolean? = false;
 
@@ -55,7 +81,7 @@ class CtrlTutor:Observable {
         //crear fachada
         var fachadaNegocio=Factory.crearFachadaNegocio();
 
-        mAuth.createUserWithEmailAndPassword(tutor.email, password)
+        mAuth.createUserWithEmailAndPassword(tutor.email, tutor.password)
             .addOnCompleteListener(activity,
                 OnCompleteListener<AuthResult?> { task ->
                     if (task.isSuccessful) {
@@ -106,6 +132,6 @@ class CtrlTutor:Observable {
                     }
                 })
 
-        return isSuccessful;
+
     }
 }

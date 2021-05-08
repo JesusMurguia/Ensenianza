@@ -6,6 +6,7 @@ open class Usuario {
     var nombre: String? = null
     var apellido: String? = null
     var email: String? = null
+    var password: String? = null
     var conversacionesUsuarios: ArrayList<ConversacionUsuario>?=null;
 
     constructor(
@@ -19,12 +20,23 @@ open class Usuario {
     }
 
     constructor(
-        nombre: String?, apellido: String?,email:String?
+        nombre: String?, apellido: String?,email:String?,password: String?
 
     ) {
         this.nombre = nombre
         this.apellido = apellido
         this.email=email;
+        this.password=password;
+
+    }
+
+    constructor(
+        email:String?,password:String?
+
+    ) {
+        this.email=email;
+        this.password = password
+
 
     }
     constructor() {}

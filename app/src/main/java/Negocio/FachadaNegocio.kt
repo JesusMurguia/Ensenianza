@@ -5,13 +5,18 @@ import Dominio.Alumno
 import Dominio.Tutor
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import androidx.lifecycle.Observer
+import apps.moviles.enseanza.PantallaLogin_2
+import apps.moviles.enseanza.PantallaRecordarUsuario
 import apps.moviles.enseanza.PantallaRegistrate
-import java.util.Observable
+import java.util.*
 
-class FachadaNegocio:iNegocio {
-    override fun iniciarSesion(context: Context?, usuario: String?, contrasenia: String?): Boolean? {
+class FachadaNegocio:iNegocio,java.util.Observer, Observable() {
+    override fun iniciarSesion(activity:PantallaLogin_2,tutor:Tutor) {
         var negocio:CtrlTutor  = CtrlTutor();
-        return negocio.iniciarSesion(context,usuario,contrasenia);
+        negocio.addObserver(this);
+         negocio.iniciarSesion(activity,tutor);
     }
 
     override fun cerrarSesion(): Boolean {
@@ -22,14 +27,29 @@ class FachadaNegocio:iNegocio {
         TODO("Not yet implemented")
     }
 
-    override fun registrarTutor(activity:PantallaRegistrate,tutor:Tutor,password:String?):Boolean?{
+    override fun registrarTutor(activity:PantallaRegistrate,tutor:Tutor){
         var negocio:CtrlTutor  = CtrlTutor();
-       return negocio.registrarTutor(activity,tutor,password)
+        negocio.addObserver(this);
+        negocio.registrarTutor(activity,tutor);
     }
 
     override fun registrarAlumno(alumno: Alumno?):String? {
         var negocioAlumno:CtrlAlumno  = CtrlAlumno();
        return negocioAlumno.registrarAlumno(alumno)
+
+    }
+
+    override fun update(p0: Observable?, p1: Any?) {
+
+        //esta lo sua al registrase e ingresar sesion
+        var isSuccessful:Boolean?=p1.toString().toBoolean();
+
+        //patron observer
+        setChanged();
+        notifyObservers(isSuccessful);
+        clearChanged();
+
+
 
     }
 

@@ -14,13 +14,20 @@ class Tutor : Usuario {
     ) {
         this.alumno = alumno
     }
-    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno) : super(
+    constructor(nombre: String?, apellido: String?,email: String?, password: String?, alumno: Alumno) : super(
         nombre,
         apellido,
-        email
+        email,
+        password
     ) {
         this.alumno = alumno
     }
+
+
+    constructor(email: String?, password: String?) : super(
+        email,
+        password
+    )
     constructor() {}
 
 }

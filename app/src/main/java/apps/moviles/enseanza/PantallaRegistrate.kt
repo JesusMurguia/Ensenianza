@@ -21,20 +21,22 @@ class PantallaRegistrate : AppCompatActivity(),Observer {
         //crear fachada
         var fachadaNegocio=Factory.crearFachadaNegocio();
 
+        //added obseerver
+        fachadaNegocio.addObserver(this);
 
 
         btnRegistrate.setOnClickListener(){
 
             //obtener alumno
-            var alumno=Alumno("marthea","sepa")
+            var alumno=Alumno("hijoAdmin","apeelidoAdmin")
 
 
 
             //obtener tutor
-            var tutor=Tutor("chayo","cebreros","chayo@gmail.com",alumno);
+            var tutor=Tutor("admin  ","adminApellido","admin@gmail.com","admin123",alumno);
 
             //registrar tutor
-            fachadaNegocio.registrarTutor(this,tutor,"passsword");
+            fachadaNegocio.registrarTutor(this,tutor);
 
 
 
