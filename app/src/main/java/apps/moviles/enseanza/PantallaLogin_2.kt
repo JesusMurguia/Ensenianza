@@ -1,13 +1,11 @@
 package apps.moviles.enseanza
 
-import Dominio.Tutor
 import Dominio.Usuario
 import Negocio.Factory
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_pantalla_login.*
 import kotlinx.android.synthetic.main.activity_pantalla_login.btnRegistro
 import kotlinx.android.synthetic.main.activity_pantalla_login_2.*
 import java.util.*
@@ -34,8 +32,8 @@ class PantallaLogin_2 : AppCompatActivity(),Observer {
 
 
             //obtener datos de edittexts
-            var ediTextEmail:EditText=findViewById(R.id.editTextTextEmail);
-            var ediTextPassword:EditText=findViewById(R.id.editTextTextPassword);
+            var ediTextEmail:EditText=findViewById(R.id.et_nombre);
+            var ediTextPassword:EditText=findViewById(R.id.et_password);
 
 
 

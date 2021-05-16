@@ -1,14 +1,12 @@
 package apps.moviles.enseanza
 
 import Dominio.Maestro
-import Dominio.Tutor
 import Negocio.Factory
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_pantalla_registrarte_maestro.*
-import kotlinx.android.synthetic.main.activity_pantalla_registrarte_options.*
-import kotlinx.android.synthetic.main.activity_pantalla_registrarte_options.options_btnPadres
 import java.util.*
 
 class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
@@ -25,9 +23,14 @@ class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
         btnRegistrate_maestro.setOnClickListener() {
 
 
-            //obtener maestro
-            var maestro= Maestro("adminMtro  ","adminApellido","adminMtro@gmail.com","admin123");
-            fachadaNegocio.registrarMaestro(this,maestro);
+            if(et_password.text.toString().equals(et_confirmpassword.text.toString())){
+                //obtener maestro
+                var maestro= Maestro(et_nombre.text.toString(),et_apellido.text.toString(),et_correo.text.toString(),et_password.text.toString());
+                fachadaNegocio.registrarMaestro(this,maestro);
+            }else{
+                Toast.makeText(this,"Contraseñas no coinciden",Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }
