@@ -137,6 +137,9 @@ class CtrlMaestro: Observable() {
                     clearChanged();
                 }else {
                     Toast.makeText(activity,"Este usuario no es maestro.",Toast.LENGTH_SHORT).show()
+                    setChanged();
+                    notifyObservers(false);
+                    clearChanged();
                 }
 
             }

@@ -96,6 +96,9 @@ class CtrlTutor:Observable {
                     clearChanged();
                 }else {
                     Toast.makeText(activity,"Este usuario no es tutor.",Toast.LENGTH_SHORT).show()
+                    setChanged();
+                    notifyObservers(false);
+                    clearChanged();
                 }
 
             }
