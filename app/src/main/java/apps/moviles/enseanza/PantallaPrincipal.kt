@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 
+
 class PantallaPrincipal : AppCompatActivity() {
 
 
@@ -74,9 +75,10 @@ class PantallaPrincipal : AppCompatActivity() {
         prin_btn_claseGrabadas.setOnClickListener() {
             startActivity(Intent(this, PantallaClasesGrabadas::class.java))
         }
-//llevar al menu
+
+        //llevar al menu
         prin_btnMenu.setOnClickListener() {
-            startActivity(Intent(this, PantallaMenu::class.java))
+            startActivityForResult(Intent(this, PantallaMenu::class.java),1)
         }
 
 
@@ -86,7 +88,7 @@ class PantallaPrincipal : AppCompatActivity() {
             startActivity(intent)
         }
 
-//levarte donde estan los tutos
+        //levarte donde estan los tutos
         print_recycler_view_tutorias.setOnClickListener() {
             startActivity(Intent(this, PantallaTutoriales::class.java))
         }
@@ -129,6 +131,14 @@ class PantallaPrincipal : AppCompatActivity() {
         tutoriales.add(Tutorial("Matematicas", "Integrales", R.drawable.thumbnail5))
         tutoriales.add(Tutorial("Geografia", "Nacionalidades", R.drawable.thumbnail4))
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            this.finish()
+        }
+    }
+
 
 
 }

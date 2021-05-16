@@ -3,6 +3,7 @@ package Negocio
 import Dominio.Tutor
 import Dominio.Usuario
 import android.widget.Toast
+import apps.moviles.enseanza.PantallaLogin
 import apps.moviles.enseanza.PantallaLogin_2
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
@@ -11,6 +12,39 @@ class CtrlUsuario : Observable {
     constructor() {
 
     }
+
+    fun isSignedIn(): Boolean {
+
+        var isSignedIn: Boolean = false;
+        //--registrat usuario en auth firebase
+        var mAuth: FirebaseAuth;
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        var user = mAuth.currentUser;
+
+        if (user !== null) {
+            isSignedIn = true;
+        }
+        return isSignedIn;
+    }
+
+    fun cerrarSesion() {
+
+
+        //--registrat usuario en auth firebase
+        var mAuth: FirebaseAuth;
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        //cerrar sesion
+        mAuth.signOut();
+
+
+    }
+
 
     fun iniciarSesionUsuario(activity: PantallaLogin_2, usuario: Usuario) {
 
@@ -21,6 +55,8 @@ class CtrlUsuario : Observable {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+
 
         mAuth.signInWithEmailAndPassword(usuario.email, usuario.password)
             .addOnCompleteListener(activity) { task ->

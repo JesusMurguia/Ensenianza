@@ -13,8 +13,11 @@ import apps.moviles.enseanza.PantallaRegistrate
 interface iNegocio {
 
     fun iniciarSesionUsuario(activity: PantallaLogin_2, usuario:Usuario);
-    fun cerrarSesion(): Boolean
+  //login
+    fun cerrarSesion()
+    fun isSignedIn(): Boolean
     fun subirTarea(): Boolean
+
     fun registrarTutor(activity: PantallaRegistrate, tutor:Tutor);
     fun registrarMaestro(activity: PantallaRegistrarteMaestro, maestro:Maestro);
     fun registrarAlumno(alumno: Alumno?):String? ;

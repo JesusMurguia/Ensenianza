@@ -1,5 +1,6 @@
 package apps.moviles.enseanza
 
+import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ class PantallaMenu: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_menu);
 
+        //crear fachada
+        val fachadaNegocio = Factory.crearFachadaNegocio()
 
 
         //menu back
@@ -21,6 +24,8 @@ class PantallaMenu: AppCompatActivity() {
 
         //btn cerrar sesion
         menu_icon_cerrar_sesion.setOnClickListener {
+            fachadaNegocio.cerrarSesion()
+            this.finish()
             startActivity(Intent(this, PantallaLogin::class.java))
         }
     }
