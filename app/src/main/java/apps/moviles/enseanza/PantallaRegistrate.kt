@@ -23,6 +23,7 @@ class PantallaRegistrate : AppCompatActivity(),Observer {
 
 
         btnRegistrate_maestro.setOnClickListener(){
+            try{
             if(et_password.text.toString().equals(et_confirmpassword.text.toString())) {
                 //obtener alumno
                 var alumno = Alumno(et_nombre.text.toString(),et_apellido.text.toString())
@@ -40,7 +41,9 @@ class PantallaRegistrate : AppCompatActivity(),Observer {
             }else{
                 Toast.makeText(this,"Contraseñas no coinciden", Toast.LENGTH_SHORT).show()
             }
-
+        }catch (e:IllegalArgumentException){
+            Toast.makeText(this,"Llena todos los campos",Toast.LENGTH_SHORT).show()
+        }
         }
     }
 

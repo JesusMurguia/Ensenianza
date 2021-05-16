@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_pantalla_registrarte_maestro.*
+import java.lang.Exception
+import java.lang.IllegalArgumentException
 import java.util.*
 
 class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
@@ -21,6 +23,8 @@ class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
         fachadaNegocio.addObserver(this);
 
         btnRegistrate_maestro.setOnClickListener() {
+            try{
+
 
 
             if(et_password.text.toString().equals(et_confirmpassword.text.toString())){
@@ -30,7 +34,9 @@ class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
             }else{
                 Toast.makeText(this,"Contraseñas no coinciden",Toast.LENGTH_SHORT).show()
             }
-
+            }catch (e:IllegalArgumentException){
+                Toast.makeText(this,"Llena todos los campos",Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
