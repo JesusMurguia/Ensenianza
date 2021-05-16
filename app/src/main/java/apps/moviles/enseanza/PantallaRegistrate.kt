@@ -4,8 +4,9 @@ import Dominio.Alumno
 import Dominio.Tutor
 import Negocio.Factory
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pantalla_registrate.*
 import java.util.*
 
@@ -22,20 +23,27 @@ class PantallaRegistrate : AppCompatActivity(),Observer {
 
 
         btnRegistrate_maestro.setOnClickListener(){
-
-            //obtener alumno
-            var alumno=Alumno("hijoAdmin","apeelidoAdmin")
-
-
-
-            //obtener tutor
-            var tutor=Tutor("admin  ","adminApellido","admin@gmail.com","admin123",alumno);
-
-            //registrar tutor
-            fachadaNegocio.registrarTutor(this,tutor);
+            try{
+                if(et_password.text.toString().equals(et_confirmpassword.text.toString())) {
+                    //obtener alumno
+                    var alumno = Alumno(et_nombre.text.toString(),et_apellido.text.toString())
 
 
+                    //obtener tutor
+                    var tutor =
+                        Tutor(et_nombrePadre.text.toString()  , et_apellidoPadre.text.toString(), et_correo.text.toString(), et_password.text.toString()
+                            , alumno);
 
+                    //registrar tutor
+                    fachadaNegocio.registrarTutor(this, tutor);
+
+
+                }else{
+                    Toast.makeText(this,"Contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                }
+            }catch (e:IllegalArgumentException){
+                Toast.makeText(this,"Llena todos los campos",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

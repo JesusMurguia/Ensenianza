@@ -1,21 +1,18 @@
 package apps.moviles.enseanza
 
-import Dominio.Tutor
 import Dominio.Usuario
 import Negocio.Factory
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_pantalla_login.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pantalla_login.btnRegistro
 import kotlinx.android.synthetic.main.activity_pantalla_login_2.*
 import java.util.*
 
-class PantallaLogin_2 : AppCompatActivity(),Observer {
-    var isClick:Boolean=false;
+class PantallaLogin_2 : AppCompatActivity(), Observer {
+    var isClick: Boolean = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,46 +20,54 @@ class PantallaLogin_2 : AppCompatActivity(),Observer {
 
 
         //crear fachada
-        var fachadaNegocio= Factory.crearFachadaNegocio();
+        var fachadaNegocio = Factory.crearFachadaNegocio();
 
         //added obseerver
         fachadaNegocio.addObserver(this);
 
 
 
-        btnRegistro.setOnClickListener(){
+        btnRegistro.setOnClickListener() {
             startActivity(Intent(this, PantallaRegistrarteOptions::class.java))
         }
-        btnIngresar.setOnClickListener(){
+        btnIngresar.setOnClickListener() {
 
 
-            if(!isClick){
-                isClick=true;
+            if (!isClick) {
+                isClick = true;
                 //obtener datos de edittexts
-                var ediTextEmail:EditText=findViewById(R.id.editTextTextEmail);
-                var ediTextPassword:EditText=findViewById(R.id.editTextTextPassword);
 
 
+                //obtener datos de edittexts
+                var ediTextEmail: EditText = findViewById(R.id.et_nombre);
+                var ediTextPassword: EditText = findViewById(R.id.et_password);
 
-                //object
-                var usuario= Usuario(ediTextEmail.text.toString(),ediTextPassword.text.toString());
+                if (ediTextEmail.text.isEmpty() && ediTextPassword.text.isEmpty()) {
+                    Toast.makeText(this, "Llena todos los campos", Toast.LENGTH_SHORT).show()
+                } else {
 
-                fachadaNegocio.iniciarSesionUsuario(this,usuario);
+                    //object
+                    var usuario =
+                        Usuario(ediTextEmail.text.toString(), ediTextPassword.text.toString());
+
+                    fachadaNegocio.iniciarSesionUsuario(this, usuario);
+                }
+
+
             }
-
         }
     }
 
     override fun update(p0: Observable?, p1: Any?) {
-        var isSuccessful:Boolean?=p1.toString().toBoolean();
+        var isSuccessful: Boolean? = p1.toString().toBoolean();
 
-        if (isSuccessful == true){
+        if (isSuccessful == true) {
 
             startActivity(Intent(this, PantallaRecordarUsuario::class.java))
-           this.finish()
+            this.finish()
 
-        }else{
-            isClick=false;
+        } else {
+            isClick = false;
         }
 
 
