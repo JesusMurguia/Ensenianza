@@ -30,7 +30,6 @@ class CtrlUsuario : Observable {
                     isSuccessful = true
                     Toast.makeText(activity, "Ha Iniciado Sesion Correctamente", Toast.LENGTH_SHORT)
                         .show();
-
                     //patron observer
                     setChanged();
                     notifyObservers(isSuccessful);

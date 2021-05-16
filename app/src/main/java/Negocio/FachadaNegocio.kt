@@ -5,12 +5,7 @@ import Dominio.Alumno
 import Dominio.Maestro
 import Dominio.Tutor
 import Dominio.Usuario
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import androidx.lifecycle.Observer
 import apps.moviles.enseanza.PantallaLogin_2
-import apps.moviles.enseanza.PantallaRecordarUsuario
 import apps.moviles.enseanza.PantallaRegistrarteMaestro
 import apps.moviles.enseanza.PantallaRegistrate
 import java.util.*
@@ -22,6 +17,18 @@ class FachadaNegocio:iNegocio,java.util.Observer, Observable() {
         var negocio:CtrlUsuario  = CtrlUsuario();
         negocio.addObserver(this);
         negocio.iniciarSesionUsuario(activity,usuario);
+    }
+
+
+    override fun isMtro(activity: PantallaLogin_2, usuario: Usuario): Boolean {
+        var negocio:CtrlMaestro  = CtrlMaestro();
+        negocio.addObserver(this);
+        return negocio.isMtro(activity,usuario)
+    }
+    override fun isTutor(activity: PantallaLogin_2, usuario: Usuario): Boolean {
+        var negocio:CtrlTutor  = CtrlTutor();
+        negocio.addObserver(this);
+        return negocio.isTutor(activity,usuario)
     }
 
     override fun cerrarSesion(): Boolean {

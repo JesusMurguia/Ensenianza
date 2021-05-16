@@ -20,12 +20,14 @@ class PantallaLogin : AppCompatActivity() {
 
 
         btnPadres.setOnClickListener() {
-
-
-            startActivity(Intent(this, PantallaLogin_2::class.java))
+            var intent=Intent(this, PantallaLogin_2::class.java)
+            intent.putExtra("tipo","padre")
+            startActivity(intent)
         }
         btnProfesor.setOnClickListener() {
-            startActivity(Intent(this, PantallaLogin_2::class.java))
+            var intent=Intent(this, PantallaLogin_2::class.java)
+            intent.putExtra("tipo","profesor")
+            startActivity(intent)
         }
         btnRegistro.setOnClickListener() {
             startActivity(Intent(this, PantallaRegistrarteOptions::class.java))

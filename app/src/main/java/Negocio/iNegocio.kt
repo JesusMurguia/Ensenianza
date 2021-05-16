@@ -18,4 +18,6 @@ interface iNegocio {
     fun registrarTutor(activity: PantallaRegistrate, tutor:Tutor);
     fun registrarMaestro(activity: PantallaRegistrarteMaestro, maestro:Maestro);
     fun registrarAlumno(alumno: Alumno?):String? ;
+    fun isMtro(activity: PantallaLogin_2,usuario: Usuario): Boolean
+    fun isTutor(activity: PantallaLogin_2,usuario: Usuario): Boolean
 }
