@@ -68,7 +68,7 @@
 
 
                     <ImageView
-                        android:id="@+id/prin_imagen_perfil"
+                        android:id="@+id/prin_imagen_perfil_mtro"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -84,7 +84,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/prin_nombre"
+                        android:id="@+id/prin_nombre_mtro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham_bold"
@@ -93,34 +93,9 @@
                         android:textSize="25sp" />
 
 
-                    <TextView
-                        android:id="@+id/prin_grado_grupo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_light"
-                        android:text="@string/grado"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
-            <!-- seek bar-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1.5"
-                android:orientation="vertical">
 
-                <SeekBar
-                    android:id="@+id/seekBar_luminosite"
-                    android:layout_width="300dp"
-                    android:layout_height="0dip"
-                    android:layout_weight=".6"
-                    android:progress="75"
-                    android:progressDrawable="@drawable/seekbar_style"
-                    android:splitTrack="false"
-                    android:thumb="@drawable/ic_baseline_star_24" />
-            </LinearLayout>
 
 
         </LinearLayout>
@@ -230,7 +205,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/clasewhite" />
+                        app:srcCompat="@drawable/videoasesoriaswhite" />
 
 
                     <TextView
@@ -241,7 +216,7 @@
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/gotham_bold"
                         android:gravity="center_horizontal"
-                        android:text="CLASES \n GRABADAS"
+                        android:text="@string/Clases_grabadas"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -275,12 +250,12 @@
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/poppins_extralight"
                     android:gravity="left"
-                    android:text="Clases"
+                    android:text="@string/nueva_asignacion"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/print_recycler_view_clases"
+                    android:id="@+id/print_recycler_view_nueva_asignacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_nombreProfesor"
@@ -291,37 +266,7 @@
 
             </LinearLayout>
 
-            <!--tutorias-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight=".5"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/prin_txt_tutorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/poppins_extralight"
-                    android:gravity="left"
-                    android:text="Tutorias"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-
-                    android:id="@+id/print_recycler_view_tutorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/prin_txt_tutorias"
-                    android:scrollbars="horizontal">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-
-            </LinearLayout>
 
 
         </LinearLayout>
@@ -335,7 +280,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/floatingActionButtonMtro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

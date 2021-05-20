@@ -8,6 +8,6 @@
         android:color="@color/prin_grisBackground"
         />
     <corners
-        android:radius="40dp"
+        android:radius="20dp"
         />
 </shape>

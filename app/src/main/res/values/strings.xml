@@ -33,7 +33,7 @@
     <string name="TareaNormal">Tarea 2 </string>
     <string name="Tarea">Tarea 3 </string>
     <string name="Entregas_Tarea">Entregas de Parcial </string>
-    <string name="Clases_grabadas">Clases Grabadas </string>
+
     <string name="videos_asesoria">Videos de asesoría</string>
 
     <string name="Geografia">Geografía</string>
@@ -63,5 +63,9 @@
 
 
     <string name="mensaje_options">Únete a Enseñanza como</string>
+
+    <!-- PANTALLA  PRINCIPAL -->
+        <string name="Clases_grabadas">CLASES <br/>GRABADAS</string>
+    <string name="nueva_asignacion">Nueva asignación</string>
 
 </resources>
