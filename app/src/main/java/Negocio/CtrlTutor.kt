@@ -1,23 +1,22 @@
 package Negocio
 
+import Dominio.Alumno
 import Dominio.Tutor
 import Dominio.Usuario
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.*
 
 
 class CtrlTutor : Observable() {
 
-
+    lateinit var tutor: Tutor;
     fun cerrarSesion(): Boolean {
         return true
     }
@@ -114,15 +113,15 @@ class CtrlTutor : Observable() {
 
                 var data = snapshot.getValue(Usuario::class.java);
 
-                var tutor = Tutor(
+                tutor = Tutor(
                     data?.nombre.toString(),
                     data?.lastname.toString(),
                     data?.email.toString()
                 )
-                Toast.makeText(activity, "key usuario ", Toast.LENGTH_LONG).show();
-                Toast.makeText(activity, snapshot.key.toString(), Toast.LENGTH_LONG).show()
 
 
+
+                getKeyAlumno(activity, snapshot.key.toString());
                 //   setChanged();
                 //notifyObservers(tutor);
                 // clearChanged();
@@ -151,7 +150,7 @@ class CtrlTutor : Observable() {
         Toast.makeText(activity, "fin", Toast.LENGTH_LONG).show()
     }
 
-    fun getAlumno(key: String) {
+    fun getKeyAlumno(activity: AppCompatActivity, key: String) {
         var rootRef = FirebaseDatabase.getInstance()
 
         var ref = rootRef.reference
@@ -161,6 +160,11 @@ class CtrlTutor : Observable() {
 
         tutorQuery.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                var key_alumno = snapshot.child("alumno_id").getValue(String::class.java);
+
+
+
+                getAlumno(activity,key_alumno.toString());
 
             }
 
@@ -184,6 +188,49 @@ class CtrlTutor : Observable() {
             }
 
         })
+    }
+
+    fun getAlumno(activity: AppCompatActivity, keyAlumno: String) {
+
+
+
+        val database = FirebaseDatabase.getInstance()
+        val alumnos = database.getReference("alumnos");
+
+        var alumno=alumnos.orderByKey().equalTo(keyAlumno);
+
+
+        alumno.addChildEventListener(object :ChildEventListener{
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("error",error.message);
+                println("error")
+                println(error.message.toString())
+                Toast.makeText(activity,error.message,Toast.LENGTH_LONG).show()
+            }
+
+
+        })
+
+
+
+
+
     }
 
 }

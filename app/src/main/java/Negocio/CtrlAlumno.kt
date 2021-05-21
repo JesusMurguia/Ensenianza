@@ -12,7 +12,7 @@ class CtrlAlumno {
         val myRef = database.getReference("alumnos").push();
 
         myRef.child("nombre").setValue(alumno?.nombre);
-        myRef.child("lastname").setValue(alumno?.apellido);
+        myRef.child("lastname").setValue(alumno?.lastname);
         myRef.child("curso_id").setValue("");
 
 
