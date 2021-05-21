@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import apps.moviles.ensenianza.RecyclerAdapter
+import apps.moviles.ensenianza.R
+import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 
 
@@ -34,7 +37,11 @@ class PantallaPrincipalMaestro : AppCompatActivity() {
         recyclerNuevaAsignacion.adapter = RecyclerAdapter(clases, View.OnClickListener {
             Toast.makeText(
                 applicationContext,
-                "has seleccionado la claseeeee: " + clases.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)).nombreClase,
+                "has seleccionado la claseeeee: " + clases.get(
+                    recyclerNuevaAsignacion.getChildAdapterPosition(
+                        it
+                    )
+                ).nombreClase,
                 Toast.LENGTH_SHORT
             ).show();
             var intent = Intent(this, PantallaClaseDetalle::class.java)
@@ -42,9 +49,18 @@ class PantallaPrincipalMaestro : AppCompatActivity() {
         });
         recyclerNuevaAsignacion.itemAnimator = DefaultItemAnimator();
 
+        //llevar al menu
+        prin_btnMenu.setOnClickListener() {
+            startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+        }
 
     }
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            this.finish()
+        }
+    }
 
     fun cargarClases() {
         clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))

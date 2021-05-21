@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 
 import android.content.Intent
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 

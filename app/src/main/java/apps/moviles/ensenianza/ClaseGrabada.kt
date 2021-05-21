@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 import android.os.Parcel
 import android.os.Parcelable
 

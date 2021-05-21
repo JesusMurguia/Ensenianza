@@ -5,9 +5,9 @@ import Dominio.Alumno
 import Dominio.Maestro
 import Dominio.Tutor
 import Dominio.Usuario
-import apps.moviles.enseanza.PantallaLogin_2
-import apps.moviles.enseanza.PantallaRegistrarteMaestro
-import apps.moviles.enseanza.PantallaRegistrate
+import apps.moviles.ensenianza.PantallaLogin_2
+import apps.moviles.ensenianza.PantallaRegistrarteMaestro
+import apps.moviles.ensenianza.PantallaRegistrate
 import java.util.*
 
 class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
@@ -20,16 +20,12 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
     }
 
 
-    override fun isMtro(activity: PantallaLogin_2, usuario: Usuario): Boolean {
-        var negocio:CtrlMaestro  = CtrlMaestro();
+    override fun isMtroOrTutor(activity: PantallaLogin_2, usuario: Usuario, tipo: String): Boolean {
+        var negocio:CtrlUsuario  = CtrlUsuario();
         negocio.addObserver(this);
-        return negocio.isMtro(activity,usuario)
+        return negocio.isMtroOrTutor(activity,usuario,tipo)
     }
-    override fun isTutor(activity: PantallaLogin_2, usuario: Usuario): Boolean {
-        var negocio:CtrlTutor  = CtrlTutor();
-        negocio.addObserver(this);
-        return negocio.isTutor(activity,usuario)
-    }
+
 
     override fun cerrarSesion() {
         var negocio: CtrlUsuario = CtrlUsuario();

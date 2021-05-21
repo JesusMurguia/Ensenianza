@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import android.content.Context
 import android.os.Bundle
@@ -14,6 +14,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_mensaje.view.*
 
 

@@ -1,13 +1,13 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import android.os.Parcel
 import android.os.Parcelable
 
-class Clase : Parcelable{
+class Tutorial : Parcelable{
 
     var nombreClase: String?=""
-    var nombreProfesor: String?=""
-    var icono: Int=-1
+    var nombreTutoria: String?=""
+    var thumbnail: Int=-1
 
 
     constructor(){
@@ -18,14 +18,14 @@ class Clase : Parcelable{
 
     constructor(source:Parcel):this() {
         nombreClase = source.readString()
-        nombreProfesor = source.readString()
-        icono = source.readInt()
+        nombreTutoria = source.readString()
+        thumbnail = source.readInt()
     }
 
-    constructor(nombreClase: String?, nombreProfesor: String?,icono: Int,) {
+    constructor(nombreClase: String?, nombreTutoria: String?,thumbnail: Int,) {
         this.nombreClase = nombreClase
-        this.nombreProfesor = nombreProfesor
-        this.icono = icono
+        this.nombreTutoria = nombreTutoria
+        this.thumbnail = thumbnail
     }
 
     override fun describeContents(): Int {
@@ -34,8 +34,8 @@ class Clase : Parcelable{
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
         p0?.writeString(nombreClase)
-        p0?.writeString(nombreProfesor)
-        p0?.writeInt(icono)
+        p0?.writeString(nombreTutoria)
+        p0?.writeInt(thumbnail)
     }
 
     companion object CREATOR : Parcelable.Creator<Clase> {

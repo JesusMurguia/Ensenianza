@@ -1,8 +1,9 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_login.*
 import kotlinx.android.synthetic.main.activity_pantalla_registrarte_options.*
 

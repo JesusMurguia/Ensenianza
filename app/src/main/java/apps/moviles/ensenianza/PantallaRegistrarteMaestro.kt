@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import Dominio.Maestro
 import Negocio.Factory
@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_registrarte_maestro.*
 import java.lang.Exception
 import java.lang.IllegalArgumentException

@@ -1,7 +1,8 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import apps.moviles.ensenianza.R
 
 class PantallaEntregarAsignacion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

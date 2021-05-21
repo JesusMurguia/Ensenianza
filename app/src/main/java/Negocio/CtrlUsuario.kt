@@ -2,17 +2,22 @@ package Negocio
 
 import Dominio.Tutor
 import Dominio.Usuario
+import android.util.Log
 import android.widget.Toast
-import apps.moviles.enseanza.PantallaLogin
-import apps.moviles.enseanza.PantallaLogin_2
+import apps.moviles.ensenianza.PantallaLogin
+import apps.moviles.ensenianza.PantallaLogin_2
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import java.security.Key
 import java.util.*
 
 class CtrlUsuario : Observable {
     constructor() {
 
     }
-
+    lateinit var maestros:DatabaseReference
+    var isMtro:Boolean=false
     fun isSignedIn(): Boolean {
 
         var isSignedIn: Boolean = false;
@@ -75,13 +80,102 @@ class CtrlUsuario : Observable {
 
                     Toast.makeText(
                         activity,
-                        "password o correo estan incorrectos",
+                        "Contraseña o correo estan incorrectos",
                         Toast.LENGTH_SHORT
                     ).show()
-
+                    setChanged();
+                    notifyObservers(isSuccessful);
+                    clearChanged();
                 }
             }
 
 
+    }
+
+    fun isMtroOrTutor(activity: PantallaLogin_2, usuario: Usuario,tipo:String): Boolean {
+
+        val database = FirebaseDatabase.getInstance()
+        val users = database.getReference("users");
+
+
+
+        if(tipo.equals("tutor")){
+            maestros = database.getReference("tutores");
+        }else if(tipo.equals("maestro")){
+           maestros = database.getReference("maestros");
+        }
+
+
+        var key:String=""
+        users.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (i in dataSnapshot.children) {
+
+                    //obtener nombre(se peude obtener mas elementos)
+                    var value = i.child("email").getValue(String::class.java)
+                    if(usuario.email.equals(value)){
+                        key =i.key.toString();
+
+                        Log.d("PantallaLogin", "La clave del men es: $key")
+                        break;
+                    }
+                }
+                next(key,activity,tipo);
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("PantallaLogin", "Failed to read value.", error.toException())
+            }
+
+        })
+
+
+
+
+
+
+
+
+        return false
+    }
+
+    fun next(key:String,activity: PantallaLogin_2,tipo:String){
+        maestros.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (i in dataSnapshot.children) {
+
+                    //obtener nombre(se peude obtener mas elementos)
+                    var value = i.child("user_id").getValue(String::class.java)
+                    if(value.equals(key)) {
+
+                        isMtro=true
+
+                    }
+                }
+                if(isMtro){
+                    setChanged();
+                    notifyObservers(true);
+                    clearChanged();
+                }else if(isMtro==false){
+                    Toast.makeText(activity,"Este usuario no es "+tipo+".",Toast.LENGTH_SHORT).show()
+                    setChanged();
+                    notifyObservers(false);
+                    clearChanged();
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("PantallaLogin", "Failed to read value.", error.toException())
+            }
+        })
     }
 }

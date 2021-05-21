@@ -1,4 +1,4 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import Negocio.Factory
 import android.app.Activity
@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_login.*
 
 

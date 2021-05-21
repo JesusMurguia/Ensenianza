@@ -1,8 +1,9 @@
-package apps.moviles.enseanza
+package apps.moviles.ensenianza
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_tarea.*
 
 class PantallaTarea : AppCompatActivity() {
