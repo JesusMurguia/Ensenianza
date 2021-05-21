@@ -5,6 +5,7 @@ import Dominio.Alumno
 import Dominio.Maestro
 import Dominio.Tutor
 import Dominio.Usuario
+import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaLogin_2
 import apps.moviles.ensenianza.PantallaRegistrarteMaestro
 import apps.moviles.ensenianza.PantallaRegistrate
@@ -20,10 +21,21 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
     }
 
 
-    override fun isMtroOrTutor(activity: PantallaLogin_2, usuario: Usuario, tipo: String): Boolean {
+    override fun isMtroOrTutor(activity: AppCompatActivity, usuario: Usuario, tipo: String): Boolean {
         var negocio:CtrlUsuario  = CtrlUsuario();
         negocio.addObserver(this);
         return negocio.isMtroOrTutor(activity,usuario,tipo)
+    }
+
+    override fun getEmail(): String {
+        var negocio:CtrlUsuario  = CtrlUsuario();
+        return negocio.getEmail();
+    }
+
+    override fun getMtro(email:String): Maestro? {
+        var negocio: CtrlMaestro = CtrlMaestro();
+        negocio.addObserver(this)
+        return negocio.getMtro(email);
     }
 
 
@@ -51,7 +63,7 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
     override fun registrarMaestro(activity: PantallaRegistrarteMaestro, maestro: Maestro) {
         var negocio: CtrlMaestro = CtrlMaestro();
         negocio.addObserver(this);
-        negocio.registrarTutor(activity, maestro);
+        negocio.registrarMtro(activity, maestro);
     }
 
     override fun registrarAlumno(alumno: Alumno?): String? {
@@ -62,13 +74,13 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
 
     override fun update(p0: Observable?, p1: Any?) {
 
-        //esta lo sua al registrase e ingresar sesion de mtro y tutor
-        var isSuccessful: Boolean? = p1.toString().toBoolean();
 
-        //patron observer
-        setChanged();
-        notifyObservers(isSuccessful);
-        clearChanged();
+            setChanged();
+            notifyObservers(p1);
+            clearChanged();
+
+
+
 
 
     }

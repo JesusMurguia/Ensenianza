@@ -133,12 +133,7 @@ class PantallaPrincipal : AppCompatActivity() {
         tutoriales.add(Tutorial("Geografia", "Nacionalidades", R.drawable.thumbnail4))
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1) {
-            this.finish()
-        }
-    }
+
 
 
 

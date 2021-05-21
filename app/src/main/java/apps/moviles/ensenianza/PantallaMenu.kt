@@ -20,7 +20,8 @@ class PantallaMenu: AppCompatActivity() {
 
         //menu back
         menu_btnMenu.setOnClickListener {
-            startActivity(Intent(this, PantallaPrincipal::class.java))
+          //  startActivity(Intent(this, PantallaPrincipal::class.java))
+            this.finish();
         }
 
         //btn cerrar sesion

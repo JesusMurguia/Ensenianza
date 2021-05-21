@@ -1,18 +1,18 @@
 package apps.moviles.ensenianza
 
+import Dominio.Usuario
 import Negocio.Factory
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_login.*
+import java.util.*
 
 
-class PantallaLogin : AppCompatActivity() {
+class PantallaLogin : AppCompatActivity(){
 
-
+    var isOkey = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_login)
@@ -20,12 +20,22 @@ class PantallaLogin : AppCompatActivity() {
         //crear fachada
         val fachadaNegocio = Factory.crearFachadaNegocio()
 
+
         //metodo para saber si ya esta logiado
         val isSignedIn = fachadaNegocio.isSignedIn()
 
         if (isSignedIn) {
-            startActivity(Intent(this, PantallaRecordarUsuario::class.java))
-            this.finish();
+
+            val sp = getSharedPreferences("isMtroOrTutor", Context.MODE_PRIVATE);
+            var isMtroOrTutor = sp.getString("isMtroOrTutor", "").toString();
+            if(isMtroOrTutor.equals("maestro")){
+                startActivity(Intent(this, PantallaPrincipalMaestro::class.java))
+                this.finish();
+            }else if(isMtroOrTutor.equals("tutor")){
+                startActivity(Intent(this, PantallaPrincipal::class.java))
+                this.finish();
+            }
+
         }
 
 
@@ -34,13 +44,13 @@ class PantallaLogin : AppCompatActivity() {
 
 
         btnPadres.setOnClickListener() {
-            var intent=Intent(this, PantallaLogin_2::class.java)
-            intent.putExtra("tipo","padre")
+            var intent = Intent(this, PantallaLogin_2::class.java)
+            intent.putExtra("tipo", "padre")
             startActivity(intent)
         }
         btnProfesor.setOnClickListener() {
-            var intent=Intent(this, PantallaLogin_2::class.java)
-            intent.putExtra("tipo","profesor")
+            var intent = Intent(this, PantallaLogin_2::class.java)
+            intent.putExtra("tipo", "profesor")
             startActivity(intent)
         }
         btnRegistro.setOnClickListener {
@@ -50,6 +60,7 @@ class PantallaLogin : AppCompatActivity() {
             startActivity(Intent(this, PantallaVideo::class.java))
         }
     }
+
 
 
 

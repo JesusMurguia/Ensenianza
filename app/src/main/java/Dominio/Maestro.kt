@@ -11,7 +11,11 @@ class Maestro: Usuario {
         password
     )
 
-
+    constructor(nombre: String?, apellido: String?,email: String?) : super(
+        nombre,
+        apellido,
+        email
+    )
     constructor(email: String?, password: String?) : super(
         email,
         password

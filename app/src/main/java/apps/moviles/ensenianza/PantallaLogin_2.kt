@@ -137,12 +137,18 @@ class PantallaLogin_2 : AppCompatActivity(), Observer {
             recordarUsuario(usuario);
             var i: Intent? = null;
             if (isMtro) {
+                val sp = getSharedPreferences("isMtroOrTutor", Context.MODE_PRIVATE);
+                sp.edit().putString("isMtroOrTutor", "maestro").apply();
 
                 i = Intent(this, PantallaPrincipalMaestro::class.java)
                 i?.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(i)
                 this.finish()
             } else if (isTutor) {
+                val sp = getSharedPreferences("isMtroOrTutor", Context.MODE_PRIVATE);
+                sp.edit().putString("isMtroOrTutor", "tutor").apply();
+
+
                 i = Intent(this, PantallaPrincipal::class.java)
                 i?.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(i)
@@ -152,6 +158,11 @@ class PantallaLogin_2 : AppCompatActivity(), Observer {
         }
 
         if (isSuccessful == false) {
+            Toast.makeText(
+                this,
+                "Ingresar credenciales validad",
+                Toast.LENGTH_SHORT
+            ).show()
             isUsuario = false;
             isClick = false;
         }
@@ -171,6 +182,7 @@ class PantallaLogin_2 : AppCompatActivity(), Observer {
                 sp.edit().putString("tipoUsuario", tipo).apply();
                 sp.edit().putString("isRemember", isRemember.toString()).apply();
 
+
             }else if(tipo=="padre")
             {
                 val sp = getSharedPreferences("loginPadre", Context.MODE_PRIVATE);
@@ -178,6 +190,9 @@ class PantallaLogin_2 : AppCompatActivity(), Observer {
                 sp.edit().putString("password", usuario.password).apply();
                 sp.edit().putString("tipoUsuario", tipo).apply();
                 sp.edit().putString("isRemember", isRemember.toString()).apply();
+
+
+
             }
 
 

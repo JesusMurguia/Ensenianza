@@ -1,18 +1,12 @@
 package Negocio
 
 import Dominio.Tutor
-import Dominio.Usuario
-import android.util.Log
 import android.widget.Toast
-import apps.moviles.ensenianza.PantallaLogin_2
 import apps.moviles.ensenianza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import java.util.*
 
 
@@ -83,7 +77,7 @@ class CtrlTutor:Observable() {
                         val myRef = database.getReference("users").push();
 
                         myRef.child("nombre").setValue(tutor.nombre);
-                        myRef.child("lastname").setValue(tutor.apellido);
+                        myRef.child("lastname").setValue(tutor.lastname);
                         myRef.child("email").setValue(tutor.email);
 
                         var user_id = myRef.key.toString();
@@ -101,7 +95,7 @@ class CtrlTutor:Observable() {
                         clearChanged();
                     } else {
 
-                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT)
+                        Toast.makeText(activity, "Authentication failed."+task.exception, Toast.LENGTH_SHORT)
                             .show()
 
                     }

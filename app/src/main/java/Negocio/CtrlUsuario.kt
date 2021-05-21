@@ -4,6 +4,7 @@ import Dominio.Tutor
 import Dominio.Usuario
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaLogin
 import apps.moviles.ensenianza.PantallaLogin_2
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +18,6 @@ class CtrlUsuario : Observable {
 
     }
     lateinit var maestros:DatabaseReference
-    var isMtro:Boolean=false
     fun isSignedIn(): Boolean {
 
         var isSignedIn: Boolean = false;
@@ -34,7 +34,7 @@ class CtrlUsuario : Observable {
         }
         return isSignedIn;
     }
-
+    var isMtro:Boolean=false
     fun cerrarSesion() {
 
 
@@ -78,11 +78,11 @@ class CtrlUsuario : Observable {
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(
-                        activity,
-                        "Contraseña o correo estan incorrectos",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                 //   Toast.makeText(
+                   //     activity,
+                   //     "Ingresar credenciales validad",
+                  //      Toast.LENGTH_SHORT
+                 //   ).show()
                     setChanged();
                     notifyObservers(isSuccessful);
                     clearChanged();
@@ -92,7 +92,7 @@ class CtrlUsuario : Observable {
 
     }
 
-    fun isMtroOrTutor(activity: PantallaLogin_2, usuario: Usuario,tipo:String): Boolean {
+    fun isMtroOrTutor(activity: AppCompatActivity, usuario: Usuario,tipo:String): Boolean {
 
         val database = FirebaseDatabase.getInstance()
         val users = database.getReference("users");
@@ -104,6 +104,7 @@ class CtrlUsuario : Observable {
         }else if(tipo.equals("maestro")){
            maestros = database.getReference("maestros");
         }
+
 
 
         var key:String=""
@@ -143,7 +144,7 @@ class CtrlUsuario : Observable {
         return false
     }
 
-    fun next(key:String,activity: PantallaLogin_2,tipo:String){
+    fun next(key:String,activity: AppCompatActivity,tipo:String){
         maestros.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
@@ -163,7 +164,7 @@ class CtrlUsuario : Observable {
                     notifyObservers(true);
                     clearChanged();
                 }else if(isMtro==false){
-                    Toast.makeText(activity,"Este usuario no es "+tipo+".",Toast.LENGTH_SHORT).show()
+                  // Toast.makeText(activity,"Este usuario no es "+tipo+".",Toast.LENGTH_SHORT).show()
                     setChanged();
                     notifyObservers(false);
                     clearChanged();
@@ -178,4 +179,15 @@ class CtrlUsuario : Observable {
             }
         })
     }
+
+    fun getEmail():String{
+        //--registrat usuario en auth firebase
+        var mAuth: FirebaseAuth;
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        return mAuth.currentUser.email;
+    }
+
 }

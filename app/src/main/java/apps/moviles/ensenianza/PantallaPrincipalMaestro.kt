@@ -1,21 +1,26 @@
 package apps.moviles.ensenianza
 
+import Dominio.Usuario
+import Negocio.FachadaNegocio
+import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import apps.moviles.ensenianza.RecyclerAdapter
-import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 
 
-class PantallaPrincipalMaestro : AppCompatActivity() {
+class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     var clases = ArrayList<Clase>();
+
+    //crear fachada
+    lateinit var fachadaNegocio: FachadaNegocio;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +30,9 @@ class PantallaPrincipalMaestro : AppCompatActivity() {
         var recyclerNuevaAsignacion: RecyclerView? = null
         recyclerNuevaAsignacion = findViewById(R.id.print_recycler_view_nueva_asignacion);
 
+        fachadaNegocio = Factory.crearFachadaNegocio();
+
+        fachadaNegocio.addObserver(this);
         //crear array de datos para las clases
         cargarClases();
 
@@ -49,18 +57,17 @@ class PantallaPrincipalMaestro : AppCompatActivity() {
         });
         recyclerNuevaAsignacion.itemAnimator = DefaultItemAnimator();
 
+        //cargar info principal
+        cargarInformacionPersonal();
+
+
         //llevar al menu
         prin_btnMenu.setOnClickListener() {
             startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
         }
 
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1) {
-            this.finish()
-        }
-    }
+
 
     fun cargarClases() {
         clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
@@ -73,5 +80,19 @@ class PantallaPrincipalMaestro : AppCompatActivity() {
         clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
         clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
         clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
+    }
+
+    fun cargarInformacionPersonal() {
+        var email = fachadaNegocio.getEmail();
+        fachadaNegocio.getMtro(email);
+
+
+    }
+
+    override fun update(p0: Observable?, p1: Any?) {
+        var usuario = p1 as Usuario;
+        var nombreMtro: TextView = findViewById(R.id.prin_nombre_mtro);
+        nombreMtro.setText(usuario?.nombre+" "+usuario.lastname);
+
     }
 }
