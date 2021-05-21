@@ -1,6 +1,8 @@
 package apps.moviles.ensenianza
 
 
+import Negocio.FachadaNegocio
+import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -14,11 +16,13 @@ import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 
 
-class PantallaPrincipal : AppCompatActivity() {
+class PantallaPrincipal : AppCompatActivity(),Observer {
 
 
     var clases = ArrayList<Clase>();
     var tutoriales = ArrayList<Tutorial>();
+    //crear fachada
+    lateinit var fachadaNegocio: FachadaNegocio;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,12 @@ class PantallaPrincipal : AppCompatActivity() {
         // asignar recycler
         recycler = findViewById(R.id.print_recycler_view_clases);
         recyclerTutorial = findViewById(R.id.print_recycler_view_tutorias);
+
+        fachadaNegocio = Factory.crearFachadaNegocio();
+
+        fachadaNegocio.addObserver(this);
+
+        cargarInformacionPersonal();
 
         //crear array de datos para las clases
         cargarClases();
@@ -134,7 +144,16 @@ class PantallaPrincipal : AppCompatActivity() {
     }
 
 
+    fun cargarInformacionPersonal() {
+        var email = fachadaNegocio.getEmail();
+        fachadaNegocio.getTutor(this,email);
 
+
+    }
+
+    override fun update(p0: Observable?, p1: Any?) {
+        TODO("Not yet implemented")
+    }
 
 
 }

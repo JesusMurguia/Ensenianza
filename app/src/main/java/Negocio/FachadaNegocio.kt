@@ -38,6 +38,13 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
         return negocio.getMtro(email);
     }
 
+    override fun getTutor(activity: AppCompatActivity,email:String) {
+        var negocio: CtrlTutor = CtrlTutor();
+        negocio.addObserver(this)
+        negocio.getTutor(activity,email);
+
+    }
+
 
     override fun cerrarSesion() {
         var negocio: CtrlUsuario = CtrlUsuario();

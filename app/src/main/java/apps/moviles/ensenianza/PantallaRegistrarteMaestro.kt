@@ -46,7 +46,7 @@ class PantallaRegistrarteMaestro : AppCompatActivity(),Observer {
         var isSuccessful:Boolean?=p1.toString().toBoolean();
 
         if (isSuccessful == true){
-            startActivity(Intent(this, PantallaRecordarUsuario::class.java))
+            startActivity(Intent(this, PantallaPrincipalMaestro::class.java))
         }
 
 

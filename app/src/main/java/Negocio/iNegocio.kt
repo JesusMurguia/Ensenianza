@@ -26,4 +26,5 @@ interface iNegocio {
   fun isMtroOrTutor(activity: AppCompatActivity, usuario: Usuario, tipo: String): Boolean
   fun getEmail():String
   fun getMtro(email:String):Maestro?
+  fun getTutor(activity: AppCompatActivity,email:String)
 }
