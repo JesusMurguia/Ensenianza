@@ -3,14 +3,16 @@ package Negocio
 import Dominio.Alumno
 import Dominio.Tutor
 import Dominio.Usuario
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 
@@ -116,16 +118,14 @@ class CtrlTutor : Observable() {
                 tutor = Tutor(
                     data?.nombre.toString(),
                     data?.lastname.toString(),
-                    data?.email.toString()
-                )
+                    data?.email.toString(),
+
+                    )
 
 
 
                 getKeyAlumno(activity, snapshot.key.toString());
-                //   setChanged();
-                //notifyObservers(tutor);
-                // clearChanged();
-                //   getAlumno(snapshot.key.toString());
+
 
             }
 
@@ -147,7 +147,7 @@ class CtrlTutor : Observable() {
 
         })
 
-        Toast.makeText(activity, "fin", Toast.LENGTH_LONG).show()
+
     }
 
     fun getKeyAlumno(activity: AppCompatActivity, key: String) {
@@ -163,8 +163,16 @@ class CtrlTutor : Observable() {
                 var key_alumno = snapshot.child("alumno_id").getValue(String::class.java);
 
 
+                var alumno = Alumno(key_alumno.toString());
+                tutor.alumno = alumno;
 
-                getAlumno(activity,key_alumno.toString());
+
+
+
+                setChanged();
+                notifyObservers(tutor);
+                clearChanged();
+
 
             }
 
@@ -190,47 +198,5 @@ class CtrlTutor : Observable() {
         })
     }
 
-    fun getAlumno(activity: AppCompatActivity, keyAlumno: String) {
-
-
-
-        val database = FirebaseDatabase.getInstance()
-        val alumnos = database.getReference("alumnos");
-
-        var alumno=alumnos.orderByKey().equalTo(keyAlumno);
-
-
-        alumno.addChildEventListener(object :ChildEventListener{
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("error",error.message);
-                println("error")
-                println(error.message.toString())
-                Toast.makeText(activity,error.message,Toast.LENGTH_LONG).show()
-            }
-
-
-        })
-
-
-
-
-
-    }
 
 }

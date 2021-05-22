@@ -1,9 +1,10 @@
 package Dominio
 
+import java.io.Serializable
 import java.util.ArrayList
 
 @JsonIgnoreProperties(ignoreUnknown=true)
-open class Usuario {
+open class Usuario :Serializable{
     var nombre: String? = null
     var lastname: String? = null
     var email: String? = null
@@ -51,6 +52,10 @@ open class Usuario {
     }
     constructor() {}
 
+    @JvmName("getNombre1")
+    fun getNombre():String?{
+        return this.nombre;
+    }
 }
 
 annotation class JsonIgnoreProperties(val ignoreUnknown: Boolean)

@@ -1,33 +1,49 @@
 package apps.moviles.ensenianza
 
 
+import Dominio.Alumno
+import Dominio.Tutor
 import Negocio.FachadaNegocio
 import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
 import java.util.*
 
 
-class PantallaPrincipal : AppCompatActivity(),Observer {
+class PantallaPrincipal : AppCompatActivity(), Observer {
 
 
     var clases = ArrayList<Clase>();
     var tutoriales = ArrayList<Tutorial>();
+    var getTutor = false;
+
+    lateinit var tutor: Tutor;
+
     //crear fachada
     lateinit var fachadaNegocio: FachadaNegocio;
 
+    //GUI
+    lateinit var nombre_alumno: TextView;
+    lateinit var nombre_clase: TextView;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_pantalla_principal);
+
         setContentView(R.layout.activity_pantalla_principal);
+
+        //inicializar GUI
+        nombre_alumno = findViewById(R.id.prin_tutor_nombre_alumno);
+        nombre_clase = findViewById(R.id.prin_tutor_grado_grupo);
+
         var recycler: RecyclerView? = null
         var recyclerTutorial: RecyclerView? = null
         // asignar recycler
@@ -89,7 +105,7 @@ class PantallaPrincipal : AppCompatActivity(),Observer {
 
         //llevar al menu
         prin_btnMenu.setOnClickListener() {
-            startActivityForResult(Intent(this, PantallaMenu::class.java),1)
+            startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
         }
 
 
@@ -118,7 +134,10 @@ class PantallaPrincipal : AppCompatActivity(),Observer {
         //perfil
 
         prin_btn_perfil.setOnClickListener {
-            startActivity(Intent(this, PantallaPerfil::class.java))
+
+            var intent = Intent(this, PantallaPerfil::class.java);
+            intent.putExtra("Tutor", this.tutor)
+            startActivity(intent);
         }
 
     }
@@ -146,13 +165,29 @@ class PantallaPrincipal : AppCompatActivity(),Observer {
 
     fun cargarInformacionPersonal() {
         var email = fachadaNegocio.getEmail();
-        fachadaNegocio.getTutor(this,email);
+
+        //obtener info completa del tutor y key de su hijo para despues buscar info completa del alumno con dicha key
+        fachadaNegocio.getTutor(this, email);
 
 
     }
 
     override fun update(p0: Observable?, p1: Any?) {
-        TODO("Not yet implemented")
+        if (getTutor == false) {
+            this.tutor = p1 as Tutor;
+            getTutor = true;
+
+
+            //obtener info completa del alumno con su key
+            fachadaNegocio.getAlumno(this, this.tutor.alumno?.key.toString());
+        } else if (getTutor == true) {
+            this.tutor.alumno = p1 as Alumno;
+            var nombre_apellido = this.tutor.alumno!!.nombre + " " + tutor.alumno!!.lastname
+            this.nombre_alumno.setText(nombre_apellido);
+            this.nombre_clase.setText(this.tutor.alumno!!.curso_id);
+
+        }
+
     }
 
 

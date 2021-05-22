@@ -1,3 +1,16 @@
 package Dominio
 
-class ConversacionUsuario(var conversacion: Conversacion, var usuario: Usuario)
+import java.io.Serializable
+
+class ConversacionUsuario : Serializable {
+    lateinit var conversacion: Conversacion;
+    lateinit var usuario: Usuario;
+
+    constructor(conversdacion:Conversacion) {
+        this.conversacion=conversacion;
+        this.usuario=usuario;
+    }
+
+    constructor() {}
+
+}

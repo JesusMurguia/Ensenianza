@@ -1,19 +1,20 @@
 package Dominio
 
-import java.util.ArrayList
+import java.io.Serializable
 
-class Tutor : Usuario {
+
+class Tutor : Usuario ,Serializable{
     var alumno: Alumno? = null
 
 
-    constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno,conversacionesUsuarios: ArrayList<ConversacionUsuario>?) : super(
-        nombre,
-        apellido,
-        email,
-        conversacionesUsuarios
-    ) {
-        this.alumno = alumno
-    }
+   // constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno,conversacionesUsuarios: ArrayList<ConversacionUsuario>?) : super(
+   //     nombre,
+  //      apellido,
+   //     email,
+   //     conversacionesUsuarios
+  //  ) {
+   //     this.alumno = alumno
+  //  }
     constructor(nombre: String?, apellido: String?,email: String?, password: String?, alumno: Alumno) : super(
         nombre,
         apellido,
@@ -34,5 +35,9 @@ class Tutor : Usuario {
         password
     )
     constructor() {}
+
+
+
+
 
 }

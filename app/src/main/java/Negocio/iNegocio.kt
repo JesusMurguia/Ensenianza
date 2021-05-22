@@ -27,4 +27,5 @@ interface iNegocio {
   fun getEmail():String
   fun getMtro(email:String):Maestro?
   fun getTutor(activity: AppCompatActivity,email:String)
+  fun getAlumno(activity: AppCompatActivity,key:String)
 }

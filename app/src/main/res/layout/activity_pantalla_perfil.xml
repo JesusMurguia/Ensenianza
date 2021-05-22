@@ -8,7 +8,7 @@
     tools:context=".PantallaPerfil">
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/perfil_btn_home"
         android:layout_width="@dimen/homeButtonWidth"
         android:layout_height="@dimen/homeButtonWidth"
         android:layout_marginBottom="16dp"
@@ -28,7 +28,7 @@
         android:layout_margin="5dp"
         android:elevation="10dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+        app:layout_constraintBottom_toTopOf="@+id/perfil_btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/perfil_email_responsable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="464dp"
@@ -83,15 +83,15 @@
         android:text="@string/correoResponsable"
         android:textColor="@color/white"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
-        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintBottom_toTopOf="@+id/perfil_btn_home"
+        app:layout_constraintEnd_toEndOf="@+id/perfil_nombre_responsable"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/perfil_nombre_responsable"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_nombre_responsable"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/perfil_nombre_responsable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gothammedium"
@@ -112,7 +112,7 @@
         android:layout_margin="5dp"
         android:elevation="10dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+        app:layout_constraintBottom_toTopOf="@+id/perfil_btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -123,7 +123,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+            app:layout_constraintBottom_toTopOf="@+id/perfil_btn_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -131,7 +131,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/perfil_nombre_alumno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gotham_bold"
@@ -143,19 +143,19 @@
         app:layout_constraintTop_toBottomOf="@+id/prin_btn_perfil" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/perfil_nombre_aula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/grado"
         android:textSize="13sp"
         android:textColor="@color/white"
         android:fontFamily="@font/gotham_light"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintEnd_toEndOf="@+id/perfil_nombre_alumno"
+        app:layout_constraintStart_toStartOf="@+id/perfil_nombre_alumno"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_nombre_alumno" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/perfil_desempenio"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -165,10 +165,10 @@
         android:text="@string/desempeño"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="@+id/perfil_nombre_aula"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="@+id/perfil_nombre_aula"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_nombre_aula" />
 
 
     <SeekBar
@@ -179,10 +179,10 @@
         android:progressDrawable="@drawable/seekbar_style"
         android:thumb="@drawable/ic_baseline_star_24"
         android:splitTrack="false"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+        app:layout_constraintBottom_toTopOf="@+id/perfil_btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_desempenio"
         app:layout_constraintVertical_bias="0.3"/>
 
 

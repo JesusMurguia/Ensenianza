@@ -84,21 +84,20 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/prin_nombre"
+                        android:id="@+id/prin_tutor_nombre_alumno"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham_bold"
-                        android:text="@string/nombreAlumno"
+
                         android:textColor="@color/white"
                         android:textSize="25sp" />
 
 
                     <TextView
-                        android:id="@+id/prin_grado_grupo"
+                        android:id="@+id/prin_tutor_grado_grupo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham_light"
-                        android:text="@string/grado"
                         android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
