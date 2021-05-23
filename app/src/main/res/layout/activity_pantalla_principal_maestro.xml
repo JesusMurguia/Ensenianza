@@ -298,11 +298,13 @@
             android:layout_alignStart="@+id/prin_mtro_floatingBtn_mas"
             android:layout_alignEnd="@+id/prin_mtro_floatingBtn_mas"
             android:backgroundTint="@color/white"
+            android:background="@color/white"
             android:src="@drawable/claseverde"
             app:fabSize="mini"
             android:clickable="true"
             android:focusable="true"
-         android:visibility="invisible"
+            android:visibility="invisible"
+
            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
