@@ -276,20 +276,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp">
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 
-            android:id="@+id/floatingActionButtonMtro"
+            android:id="@+id/prin_mtro_floatingBtn_mas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="15dp"
-
-
+            android:clickable="true"
+            android:focusable="true"
             android:backgroundTint="@color/white"
             android:src="@drawable/massnfondo"
             app:fabSize="mini" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/prin_mtro_floatingBtn_mas_clase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/prin_mtro_floatingBtn_mas"
+            android:layout_alignStart="@+id/prin_mtro_floatingBtn_mas"
+            android:layout_alignEnd="@+id/prin_mtro_floatingBtn_mas"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/claseverde"
+            app:fabSize="mini"
+            android:clickable="true"
+            android:focusable="true"
+         android:visibility="invisible"
+           />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/prin_mtro_floatingBtn_mas_aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/prin_mtro_floatingBtn_mas_clase"
+            android:layout_alignStart="@+id/prin_mtro_floatingBtn_mas_clase"
+            android:layout_alignEnd="@+id/prin_mtro_floatingBtn_mas_clase"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/aulaverde"
+            app:fabSize="mini"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible"
+
+            />
+
+
 
     </RelativeLayout>
 </RelativeLayout>

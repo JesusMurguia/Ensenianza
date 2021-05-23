@@ -6,21 +6,34 @@ import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_pantalla_principal.*
+import kotlinx.android.synthetic.main.activity_pantalla_principal.prin_btnMenu
+import kotlinx.android.synthetic.main.activity_pantalla_principal_maestro.*
 import java.util.*
 
 
 class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
+
     var clases = ArrayList<Clase>();
 
     //crear fachada
     lateinit var fachadaNegocio: FachadaNegocio;
+
+    //gui floatin button exp
+    val rotateOpen:Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_open_anim) }
+    val rotateClosed:Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_closed_anim) }
+    val from:Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.from_button_anim) }
+    val to:Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.to_buttom_anim) }
+
+    private var clicked=false;
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +76,25 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
         //llevar al menu
         prin_btnMenu.setOnClickListener() {
-            startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+           startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+
+        }
+
+        //btn floatin +
+        prin_mtro_floatingBtn_mas.setOnClickListener() {
+         onAddBtnClicked();
+
+        }
+
+        //btn floatin + clases
+        prin_mtro_floatingBtn_mas_clase.setOnClickListener() {
+           // startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+            Toast.makeText(this,"agregar mas clases..",Toast.LENGTH_LONG).show();
+        }
+        //btn floatin + aulas
+        prin_mtro_floatingBtn_mas_aula.setOnClickListener() {
+           // startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+            Toast.makeText(this,"agregar mas aulas..",Toast.LENGTH_LONG).show();
         }
 
     }
@@ -95,4 +126,49 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         nombreMtro.setText(usuario?.nombre+" "+usuario.lastname);
 
     }
+
+    private fun onAddBtnClicked(){
+        setVisibility(clicked);
+        setAnimation(clicked);
+        setClicked(clicked);
+       clicked=!clicked
+
+    }
+
+    private fun setVisibility(clicked:Boolean) {
+        if(!clicked){
+            prin_mtro_floatingBtn_mas_clase.visibility=View.VISIBLE
+            prin_mtro_floatingBtn_mas_aula.visibility=View.VISIBLE;
+        }else{
+            prin_mtro_floatingBtn_mas_clase.visibility=View.INVISIBLE
+            prin_mtro_floatingBtn_mas_aula.visibility=View.INVISIBLE;
+        }
+    }
+
+    private fun setAnimation(clicked: Boolean) {
+        if (!clicked){
+            prin_mtro_floatingBtn_mas_clase.startAnimation(from);
+            prin_mtro_floatingBtn_mas_aula.startAnimation(from);
+            prin_mtro_floatingBtn_mas.startAnimation(rotateOpen);
+
+        }else{
+            prin_mtro_floatingBtn_mas_clase.startAnimation(to);
+            prin_mtro_floatingBtn_mas_aula.startAnimation(to);
+            prin_mtro_floatingBtn_mas.startAnimation(rotateClosed);
+        }
+    }
+
+    private fun setClicked(clicked: Boolean){
+        if(!clicked){
+
+            prin_mtro_floatingBtn_mas_clase.isClickable=true
+            prin_mtro_floatingBtn_mas_aula.isClickable=true
+        }else{
+            prin_mtro_floatingBtn_mas_clase.isClickable=false
+            prin_mtro_floatingBtn_mas_aula.isClickable=false
+        }
+    }
+
+
+
 }
