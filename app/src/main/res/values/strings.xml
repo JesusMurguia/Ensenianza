@@ -65,7 +65,7 @@
     <string name="mensaje_options">Únete a Enseñanza como</string>
 
     <!-- PANTALLA  PRINCIPAL -->
-        <string name="Clases_grabadas">CLASES <br/>GRABADAS</string>
+    <string name="Clases_grabadas">CLASES <br />GRABADAS</string>
     <string name="nueva_asignacion">Nueva asignación</string>
 
 </resources>

@@ -88,12 +88,12 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
         //btn floatin + clases
         prin_mtro_floatingBtn_mas_clase.setOnClickListener() {
-           // startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+            startActivityForResult(Intent(this, PantallaClases::class.java), 1)
             Toast.makeText(this,"agregar mas clases..",Toast.LENGTH_LONG).show();
         }
         //btn floatin + aulas
         prin_mtro_floatingBtn_mas_aula.setOnClickListener() {
-           // startActivityForResult(Intent(this, PantallaMenu::class.java), 1)
+            startActivityForResult(Intent(this, PantallaCrearAula::class.java), 1)
             Toast.makeText(this,"agregar mas aulas..",Toast.LENGTH_LONG).show();
         }
 
