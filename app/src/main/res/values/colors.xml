@@ -13,6 +13,8 @@
 
     <!-- color usado para la pantalla principal-->
     <color name="prin_grisBackground">#61707070</color>
+    <!-- color usado para la pantalla principal-->
+    <color name="_grisBackground">#99707070</color>
 
     <color name="grisBackground2">#2EFFFFFF</color>
     <color name="boton">#00000000</color>
