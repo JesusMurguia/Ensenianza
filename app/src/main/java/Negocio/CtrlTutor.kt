@@ -5,15 +5,12 @@ import Dominio.Tutor
 import Dominio.Usuario
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_pantalla_mensajes.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class CtrlTutor : Observable() {
@@ -110,40 +107,32 @@ class CtrlTutor : Observable() {
 
         // query para obtener tutor(usuario)
         var user = ref.child("users").orderByChild("email").equalTo(emailTutor);
-        user.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+        user.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                var data = snapshot.getValue(Usuario::class.java);
+                var data: Tutor?=null;
+                var key=""
 
-                tutor = Tutor(
+                for (i in snapshot.children){
+                    data = i.getValue(Tutor::class.java)!!
+                    key=i.key.toString();
+                }
+
+                 tutor = Tutor(
                     data?.nombre.toString(),
                     data?.lastname.toString(),
-                    data?.email.toString(),
+                    data?.email.toString()
 
-                    )
+                )
 
+                getIdAlumno(key);
 
-
-                getKeyAlumno( snapshot.key.toString());
-
-
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.w("CtrlTutor", "Failed to read value.", error.toException())
             }
+
 
         })
 
@@ -151,54 +140,43 @@ class CtrlTutor : Observable() {
     }
 
 
-
-    fun getKeyAlumno( key: String) {
-
-
-
+    /**
+     * este metodo obtiene el id del alumno de un tutor
+     */
+    fun getIdAlumno(id_tutor: String) {
 
         var rootRef = FirebaseDatabase.getInstance()
 
         var ref = rootRef.reference
 
 
-        var tutorQuery = ref.child("tutores").orderByChild("user_id").equalTo(key);
+        var tutorQuery = ref.child("tutores").orderByChild("user_id").equalTo(id_tutor);
 
-        tutorQuery.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                var key_alumno = snapshot.child("alumno_id").getValue(String::class.java);
+        tutorQuery.addListenerForSingleValueEvent(object : ValueEventListener {
 
 
-                var alumno = Alumno(key_alumno.toString());
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+
+
+                var key_alumno=""
+                for (i in snapshot.children){
+                     key_alumno = i.child("alumno_id").getValue(String::class.java).toString();
+                }
+
+                var alumno = Alumno(key_alumno);
                 tutor.alumno = alumno;
-
-
 
 
                 setChanged();
                 notifyObservers(tutor);
                 clearChanged();
 
-
-            }
-
-            override fun onChildChanged(
-                snapshot: DataSnapshot,
-                previousChildName: String?
-            ) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.w("CtrlTutor", "Failed to read value.", error.toException())
             }
 
         })
