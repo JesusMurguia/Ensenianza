@@ -3,6 +3,7 @@ package apps.moviles.ensenianza
 
 import Dominio.Alumno
 import Dominio.Maestro
+import Dominio.Usuario
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -25,7 +26,7 @@ class ChatMaestro : AppCompatActivity() {
     private lateinit var signInClient: GoogleSignInClient
     private lateinit var binding: ActivityMainBinding
     private lateinit var manager: LinearLayoutManager
-    private lateinit var usuario: Maestro
+    private lateinit var usuario: Usuario
 
     // Firebase instance variables
     private lateinit var auth: FirebaseAuth
@@ -37,7 +38,7 @@ class ChatMaestro : AppCompatActivity() {
         var bundle = intent.extras
         if (bundle != null) {
             key= bundle.get("key") as String
-            usuario= bundle.get("usuario") as Maestro
+            usuario= bundle.get("usuario") as Usuario
         }
         val database = FirebaseDatabase.getInstance()
         db=database
@@ -230,6 +231,7 @@ class ChatMaestro : AppCompatActivity() {
         return user?.photoUrl?.toString()
 
          */
+
         return "https://www.anaitgames.com/images/uploads/2016/05/sonic-meme-nuevo-juego-1.jpg"
     }
 

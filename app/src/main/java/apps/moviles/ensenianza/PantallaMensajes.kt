@@ -47,7 +47,7 @@ class PantallaMensajes : AppCompatActivity() {
 
             // query para obtener tutor(usuario)
             var maestrosfb = ref.child("maestros")
-            maestrosfb.addListenerForSingleValueEvent(object : ValueEventListener {
+            maestrosfb.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
@@ -70,7 +70,7 @@ class PantallaMensajes : AppCompatActivity() {
             })
             var maestrosNombre=ArrayList<String>()
             var users = ref.child("users")
-            users.addListenerForSingleValueEvent(object : ValueEventListener {
+            users.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
