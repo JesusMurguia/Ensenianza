@@ -11,6 +11,8 @@
     <!-- este color era este FF000000-->
     <color name="black">#AAC929</color>
 
+    <color name="negro">#FF000000</color>
+
 
 
     <color name="white">#FFFFFFFF</color>
