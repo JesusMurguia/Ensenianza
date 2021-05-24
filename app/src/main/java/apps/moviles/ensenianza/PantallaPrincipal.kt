@@ -3,6 +3,7 @@ package apps.moviles.ensenianza
 
 import Dominio.Alumno
 import Dominio.Tutor
+import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
 import android.content.Intent
@@ -167,7 +168,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
         var email = fachadaNegocio.getEmail();
 
         //obtener info completa del tutor y key de su hijo para despues buscar info completa del alumno con dicha key
-        fachadaNegocio.getTutor(this, email);
+        fachadaNegocio.getTutor(email);
 
 
     }

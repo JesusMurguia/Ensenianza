@@ -1,8 +1,8 @@
 package Dominio
 
-import java.util.*
+import java.io.Serializable
 
-class Maestro: Usuario {
+class Maestro: Usuario,Serializable{
 
     constructor(nombre: String?, apellido: String?,email: String?, password: String?) : super(
         nombre,

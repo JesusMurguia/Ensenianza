@@ -10,16 +10,9 @@ open class Usuario :Serializable{
     var email: String? = null
     var password: String? = null
     var conversacionesUsuarios: ArrayList<ConversacionUsuario>?=null;
+    var key: String? = null
 
-    constructor(
-        nombre: String?, apellido: String?,email:String?,
-        conversacionesUsuarios: ArrayList<ConversacionUsuario>?
-    ) {
-        this.nombre = nombre
-        this.lastname = apellido
-        this.email=email;
-        this.conversacionesUsuarios=conversacionesUsuarios;
-    }
+
 
     constructor(
         nombre: String?, apellido: String?,email:String?,password: String?

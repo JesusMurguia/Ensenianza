@@ -1,10 +1,7 @@
 package Negocio
 
 
-import Dominio.Alumno
-import Dominio.Maestro
-import Dominio.Tutor
-import Dominio.Usuario
+import Dominio.*
 import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaLogin_2
 import apps.moviles.ensenianza.PantallaRegistrarteMaestro
@@ -32,23 +29,33 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
         return negocio.getEmail();
     }
 
-    override fun getMtro(email:String): Maestro? {
-        var negocio: CtrlMaestro = CtrlMaestro();
+    override fun getUsuario(email:String): Usuario? {
+        var negocio: CtrlUsuario = CtrlUsuario();
         negocio.addObserver(this)
-        return negocio.getMtro(email);
+        return negocio.getUsuario(email);
     }
 
-    override fun getTutor(activity: AppCompatActivity,email:String) {
+    override fun getMtro(email: String): Maestro? {
+        TODO("Not yet implemented")
+    }
+
+    override fun getTutor(email:String) {
         var negocio: CtrlTutor = CtrlTutor();
         negocio.addObserver(this)
-        negocio.getTutor(activity,email);
+        negocio.getTutor(email);
 
     }
+
 
     override fun getAlumno(activity: AppCompatActivity, key: String) {
         var negocio: CtrlAlumno = CtrlAlumno();
         negocio.addObserver(this)
         negocio.getAlumno(activity,key);
+    }
+
+    override fun crearAula(keyMaestro: String, curso: Curso) {
+        var negocio: CtrlAula = CtrlAula();
+        negocio.crearAula(keyMaestro,curso);
     }
 
 

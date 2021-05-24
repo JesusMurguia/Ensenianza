@@ -101,7 +101,7 @@ class CtrlTutor : Observable() {
 
     }
 
-    fun getTutor(activity: AppCompatActivity, emailTutor: String) {
+    fun getTutor(emailTutor: String) {
 
 
         var rootRef = FirebaseDatabase.getInstance()
@@ -124,7 +124,7 @@ class CtrlTutor : Observable() {
 
 
 
-                getKeyAlumno(activity, snapshot.key.toString());
+                getKeyAlumno( snapshot.key.toString());
 
 
             }
@@ -150,7 +150,8 @@ class CtrlTutor : Observable() {
 
     }
 
-    fun getKeyAlumno(activity: AppCompatActivity, key: String) {
+
+    fun getKeyAlumno( key: String) {
         var rootRef = FirebaseDatabase.getInstance()
 
         var ref = rootRef.reference

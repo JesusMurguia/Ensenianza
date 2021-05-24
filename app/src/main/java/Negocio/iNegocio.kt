@@ -1,9 +1,6 @@
 package Negocio
 
-import Dominio.Alumno
-import Dominio.Maestro
-import Dominio.Tutor
-import Dominio.Usuario
+import Dominio.*
 import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +22,9 @@ interface iNegocio {
   fun registrarAlumno(alumno: Alumno?): String?;
   fun isMtroOrTutor(activity: AppCompatActivity, usuario: Usuario, tipo: String): Boolean
   fun getEmail():String
+  fun getUsuario(email:String):Usuario?
   fun getMtro(email:String):Maestro?
-  fun getTutor(activity: AppCompatActivity,email:String)
+  fun getTutor(email:String)
   fun getAlumno(activity: AppCompatActivity,key:String)
+  fun crearAula(keyMaestro: String, curso: Curso);
 }

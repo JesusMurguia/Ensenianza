@@ -1,11 +1,59 @@
 package apps.moviles.ensenianza
 
+import Dominio.Curso
+import Dominio.Maestro
+import Dominio.Usuario
+import Negocio.FachadaNegocio
+import Negocio.Factory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 
 class PantallaCrearAula : AppCompatActivity() {
+
+    //crear fachada
+    lateinit var fachadaNegocio: FachadaNegocio;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_crear_aula)
+
+
+        fachadaNegocio = Factory.crearFachadaNegocio();
+
+        //gui
+        var txt_nombreProfesor=findViewById(R.id.txt_nombreProfesor) as TextView;
+        var nombre_aula=findViewById(R.id.nombre_aula) as EditText;
+        var descripcion=findViewById(R.id.descripcion) as EditText;
+        var btn_crear=findViewById(R.id.btn_crear) as ImageButton;
+
+
+
+        var maestro=intent.getSerializableExtra("usuario") as Usuario;
+        var name_lastname="  Mtro. "+maestro.nombre+" "+maestro.lastname+"  ";
+        txt_nombreProfesor.setText(name_lastname);
+
+        btn_crear.setOnClickListener {
+
+            if (nombre_aula.text.toString().isEmpty()&&!descripcion.text.toString().isEmpty()){
+                Toast.makeText(this,"Favor de ingresar el nombre del aula..",Toast.LENGTH_SHORT).show();
+            }else
+            if (descripcion.text.toString().isEmpty()&&!nombre_aula.text.toString().isEmpty()){
+                Toast.makeText(this,"Favor de ingresar descripcion..",Toast.LENGTH_SHORT).show();
+            }else
+            if(nombre_aula.text.toString().isEmpty()&&descripcion.text.toString().isEmpty()){
+                Toast.makeText(this,"Favor de ingresar datos..",Toast.LENGTH_SHORT).show();
+
+            }else{
+                Toast.makeText(this,"creando aula..",Toast.LENGTH_SHORT).show();
+                fachadaNegocio.crearAula(maestro.key.toString(), Curso(nombre_aula.text.toString()));
+            }
+
+        }
+
     }
 }

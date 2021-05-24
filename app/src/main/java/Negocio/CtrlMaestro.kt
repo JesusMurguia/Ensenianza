@@ -2,20 +2,20 @@ package Negocio
 
 import Dominio.Maestro
 import Dominio.Usuario
+import android.util.Log
 import android.widget.Toast
 import apps.moviles.ensenianza.PantallaRegistrarteMaestro
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.*
 
 class CtrlMaestro : Observable() {
 
-
+    /**
+     * este metodo registra a un mtro al sitema
+     */
     fun registrarMtro(activity: PantallaRegistrarteMaestro, maestro: Maestro) {
 
 
@@ -83,54 +83,37 @@ class CtrlMaestro : Observable() {
 
     }
 
-    fun getMtro(emailMaestro: String): Maestro? {
-
-        var maestro: Maestro? =null;
-        // Initialize Firebase Auth
-
+    /**
+     * este metodo obtiene la key del mtro de la tabla maestros por medio del user_id, cabe mencionar que no regresa el user_id del mtro
+     */
+    fun getKey(user_id:String){
         var rootRef = FirebaseDatabase.getInstance()
 
-        var ref = rootRef.reference
-        var user = ref.child("users").orderByChild("email").equalTo(emailMaestro);
-        user.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                var data = snapshot.getValue(Usuario::class.java);
+        var ref = rootRef.getReference("maestros").orderByChild("user_id").equalTo(user_id);
+        //  var maestro = ref.orderByChild("user_id").equalTo(user_id);
+        ref.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                maestro = Maestro(
-                    data?.nombre.toString(),
-                    data?.lastname.toString(),
-                    data?.email.toString()
-                )
+                var key =""
+                for (i in snapshot.children){
+                    key=i.key.toString();
+                }
 
                 setChanged();
-                notifyObservers(maestro);
+                notifyObservers(key);
                 clearChanged();
-
-
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.w("CtrlMaestro", "Failed to read value.", error.toException())
             }
+
 
         })
 
-
-
-
-        return maestro;
     }
+
+
+
 
 }

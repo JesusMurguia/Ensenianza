@@ -1,5 +1,6 @@
 package apps.moviles.ensenianza
 
+import Dominio.Maestro
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
@@ -22,6 +23,7 @@ import java.util.*
 class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     var clases = ArrayList<Clase>();
+    lateinit var maestro:Usuario;
 
     //crear fachada
     lateinit var fachadaNegocio: FachadaNegocio;
@@ -93,7 +95,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         }
         //btn floatin + aulas
         prin_mtro_floatingBtn_mas_aula.setOnClickListener() {
-            startActivityForResult(Intent(this, PantallaCrearAula::class.java), 1)
+            startActivityForResult(Intent(this, PantallaCrearAula::class.java).putExtra("usuario",this.maestro), 1)
             Toast.makeText(this,"agregar mas aulas..",Toast.LENGTH_LONG).show();
         }
 
@@ -115,15 +117,16 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     fun cargarInformacionPersonal() {
         var email = fachadaNegocio.getEmail();
-        fachadaNegocio.getMtro(email);
+        fachadaNegocio.getUsuario(email);
 
 
     }
 
     override fun update(p0: Observable?, p1: Any?) {
-        var usuario = p1 as Usuario;
+        this.maestro = p1 as Usuario;
         var nombreMtro: TextView = findViewById(R.id.prin_nombre_mtro);
-        nombreMtro.setText(usuario?.nombre+" "+usuario.lastname);
+        var name_lastname=maestro.nombre+" "+maestro.lastname;
+        nombreMtro.setText(name_lastname);
 
     }
 
