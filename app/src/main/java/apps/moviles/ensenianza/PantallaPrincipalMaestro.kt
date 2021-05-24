@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_pantalla_principal.prin_btnMenu
 import kotlinx.android.synthetic.main.activity_pantalla_principal_maestro.*
+import kotlinx.android.synthetic.main.activity_pantalla_principal_maestro.prin_btn_mensajes
 import java.util.*
 
 
 class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     var clases = ArrayList<Clase>();
-
+    lateinit var usuario:Usuario
     //crear fachada
     lateinit var fachadaNegocio: FachadaNegocio;
 
@@ -86,6 +87,13 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
         }
 
+        prin_btn_mensajes.setOnClickListener {
+            intent=Intent(this, PantallaMensajesMaestro::class.java)
+            intent.putExtra("usuario",usuario)
+            startActivity(intent)
+        }
+
+
         //btn floatin + clases
         prin_mtro_floatingBtn_mas_clase.setOnClickListener() {
             startActivityForResult(Intent(this, PantallaClases::class.java), 1)
@@ -121,7 +129,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     }
 
     override fun update(p0: Observable?, p1: Any?) {
-        var usuario = p1 as Usuario;
+        usuario = p1 as Usuario;
         var nombreMtro: TextView = findViewById(R.id.prin_nombre_mtro);
         nombreMtro.setText(usuario?.nombre+" "+usuario.lastname);
 
