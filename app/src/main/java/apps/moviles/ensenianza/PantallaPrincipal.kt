@@ -58,7 +58,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
         cargarInformacionPersonal();
 
         //crear array de datos para las clases
-        cargarClases();
+        cargarClases()
 
         //horizontal layout
         var layoutManager: LinearLayoutManager =
@@ -129,7 +129,9 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
 
         //mesnajes
         prin_btn_mensajes.setOnClickListener {
-            startActivity(Intent(this, PantallaMensajes::class.java))
+            intent=Intent(this, PantallaMensajes::class.java)
+            intent.putExtra("tutor",tutor)
+            startActivity(intent)
         }
 
         //perfil
@@ -186,6 +188,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
             var nombre_apellido = this.tutor.alumno!!.nombre + " " + tutor.alumno!!.lastname
             this.nombre_alumno.setText(nombre_apellido);
             this.nombre_clase.setText(this.tutor.alumno!!.curso_id);
+            println("aaaaaaaaaaaaaa"+this.tutor.alumno!!.key)
 
         }
 

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Enseñanza">
         <activity android:name=".PantallaCrearAula"></activity>
         <activity android:name=".PantallaPrincipalMaestro" />
+        <activity android:name=".ChatMaestro" />
+        <activity android:name=".PantallaMensajesMaestro" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".PantallaRegistrarteMaestro" />
         <activity android:name=".PantallaRegistrarteOptions" />
         <activity android:name=".PantallaTarea" />

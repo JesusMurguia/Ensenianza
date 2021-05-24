@@ -1,22 +1,19 @@
 package apps.moviles.ensenianza
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import apps.moviles.ensenianza.R
-
-
 
 import Dominio.Alumno
+import Dominio.Maestro
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import apps.moviles.ensenianza.databinding.ActivityMainBinding
-import apps.moviles.ensenianza.FriendlyMessage
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -24,25 +21,23 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 
-class MainActivity : AppCompatActivity() {
+class ChatMaestro : AppCompatActivity() {
     private lateinit var signInClient: GoogleSignInClient
     private lateinit var binding: ActivityMainBinding
     private lateinit var manager: LinearLayoutManager
+    private lateinit var usuario: Maestro
 
     // Firebase instance variables
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
     private lateinit var adapter: FriendlyMessageAdapter
-    private lateinit var usuario: String
-    private lateinit var maestro: String
     private lateinit var key:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var bundle = intent.extras
         if (bundle != null) {
-            usuario = bundle.get("usuario") as String
-            maestro = bundle.get("maestro") as String
             key= bundle.get("key") as String
+            usuario= bundle.get("usuario") as Maestro
         }
         val database = FirebaseDatabase.getInstance()
         db=database
@@ -235,7 +230,7 @@ class MainActivity : AppCompatActivity() {
         return user?.photoUrl?.toString()
 
          */
-        return "https://i.pinimg.com/originals/3f/dd/a3/3fdda397d210b99a237ffc48f2b378cd.jpg"
+        return "https://www.anaitgames.com/images/uploads/2016/05/sonic-meme-nuevo-juego-1.jpg"
     }
 
     private fun getUserName(): String? {
@@ -246,7 +241,7 @@ class MainActivity : AppCompatActivity() {
         } else ANONYMOUS
 
          */
-        return usuario
+        return usuario.nombre + " " + usuario.lastname
     }
 
     companion object {
