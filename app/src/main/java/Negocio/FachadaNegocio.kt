@@ -45,6 +45,7 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
 
     }
 
+
     override fun getAlumno(activity: AppCompatActivity, key: String) {
         var negocio: CtrlAlumno = CtrlAlumno();
         negocio.addObserver(this)

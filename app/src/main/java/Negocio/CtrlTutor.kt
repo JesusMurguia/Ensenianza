@@ -3,17 +3,17 @@ package Negocio
 import Dominio.Alumno
 import Dominio.Tutor
 import Dominio.Usuario
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import apps.moviles.ensenianza.PantallaRegistrate
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_pantalla_mensajes.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CtrlTutor : Observable() {
@@ -149,6 +149,9 @@ class CtrlTutor : Observable() {
 
 
     }
+
+
+
 
     fun getKeyAlumno(activity: AppCompatActivity, key: String) {
         var rootRef = FirebaseDatabase.getInstance()
