@@ -6,6 +6,7 @@ import Dominio.Tutor
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -143,7 +144,15 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
             startActivity(intent);
         }
 
+        floatingActionButton.setOnClickListener(){
+            intent=Intent(this, PantallaUnirseAClase::class.java)
+            intent.putExtra("alumnoKey", tutor.alumno?.key)
+            startActivity(intent)
+        }
+
+
     }
+
 
     fun cargarClases() {
         clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
