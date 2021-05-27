@@ -1,4 +1,5 @@
 package apps.moviles.ensenianza
+import Dominio.Clase
 import android.os.Parcel
 import android.os.Parcelable
 

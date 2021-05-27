@@ -1,28 +1,33 @@
-package apps.moviles.ensenianza
+package Dominio
 
 import android.os.Parcel
 import android.os.Parcelable
+import apps.moviles.ensenianza.R
 
-class Clase : Parcelable{
+class Clase : Parcelable {
 
-    var nombreClase: String?=""
-    var nombreProfesor: String?=""
-    var icono: Int=-1
+    var nombreClase: String? = ""
+    var nombreProfesor: String? = ""
+    var icono: Int = -1
+    var idClase: String? = ""
 
+    constructor(clase_id: String) {
+        this.idClase = clase_id
+        this.icono= R.drawable.clasewhite;
+    }
 
-    constructor(){
+    constructor() {
 
     }
 
 
-
-    constructor(source:Parcel):this() {
+    constructor(source: Parcel) : this() {
         nombreClase = source.readString()
         nombreProfesor = source.readString()
         icono = source.readInt()
     }
 
-    constructor(nombreClase: String?, nombreProfesor: String?,icono: Int,) {
+    constructor(nombreClase: String?, nombreProfesor: String?, icono: Int) {
         this.nombreClase = nombreClase
         this.nombreProfesor = nombreProfesor
         this.icono = icono

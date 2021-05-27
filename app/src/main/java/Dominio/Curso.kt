@@ -1,14 +1,22 @@
 package Dominio
 
-import java.util.*
+import java.io.Serializable
+import kotlin.collections.ArrayList
 
-class Curso{
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+class Curso:Serializable{
     lateinit var nombre: String
-    lateinit var parciales: ArrayList<Parcial>
-    lateinit var cursosAlumnos: ArrayList<CursoAlumno>
+    lateinit var code: String
+    lateinit var descripcion: String
+    lateinit var id: String
+    lateinit var clases: ArrayList<Clase>
+    var icono: Int = -1
 
-    constructor(nombre: String) {
+
+    constructor(nombre: String,Descripcion:String) {
         this.nombre = nombre
+        this.descripcion=descripcion;
     }
 
     constructor()

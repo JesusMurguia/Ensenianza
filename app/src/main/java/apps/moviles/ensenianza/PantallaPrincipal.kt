@@ -2,11 +2,10 @@ package apps.moviles.ensenianza
 
 
 import Dominio.Alumno
+import Dominio.Clase
 import Dominio.Tutor
-import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View

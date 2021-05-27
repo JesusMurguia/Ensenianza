@@ -1,6 +1,8 @@
 package apps.moviles.ensenianza
 
-import android.app.Activity
+import Dominio.Clase
+import Dominio.Curso
+import Dominio.Tutor
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,19 +10,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import apps.moviles.ensenianza.R
 import kotlinx.android.synthetic.main.activity_pantalla_clase.view.*
-import kotlinx.android.synthetic.main.activity_pantalla_mensaje.view.*
 import kotlinx.android.synthetic.main.activity_pantalla_mensajes.*
 
 class PantallaClases : AppCompatActivity() {
     var adapter: ClasesAdapter? = null
     var clases = ArrayList<Clase>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_clases);
         cargarClases();
+
+        var bundle=intent.extras
+        if(bundle!=null){
+            var curso=bundle.get("curso") as Curso
+        }
+
 
 
         adapter=ClasesAdapter(this, clases);

@@ -1,9 +1,12 @@
 package apps.moviles.ensenianza
 
+import Dominio.Clase
+import Dominio.Curso
 import Dominio.Maestro
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -19,13 +22,15 @@ import kotlinx.android.synthetic.main.activity_pantalla_principal.prin_btnMenu
 import kotlinx.android.synthetic.main.activity_pantalla_principal_maestro.*
 import kotlinx.android.synthetic.main.activity_pantalla_principal_maestro.prin_btn_mensajes
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     var clases = ArrayList<Clase>();
 
-    lateinit var maestro:Usuario;
+    lateinit var maestro:Maestro;
+
 
 
     //crear fachada
@@ -39,44 +44,30 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     private var clicked=false;
 
+    private var isLoadMtro=false;
+    private var isLoadCursos=false;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_principal_maestro)
 
-        var recyclerNuevaAsignacion: RecyclerView? = null
-        recyclerNuevaAsignacion = findViewById(R.id.print_recycler_view_nueva_asignacion);
 
+
+        this.maestro= Maestro();
         fachadaNegocio = Factory.crearFachadaNegocio();
 
         fachadaNegocio.addObserver(this);
-        //crear array de datos para las clases
-        cargarClases();
-
-        //horizontal layout
-        var layoutManager: LinearLayoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        //asignar layout al recycler view
-        recyclerNuevaAsignacion.layoutManager = layoutManager;
-        recyclerNuevaAsignacion.adapter = RecyclerAdapter(clases, View.OnClickListener {
-            Toast.makeText(
-                applicationContext,
-                "has seleccionado la claseeeee: " + clases.get(
-                    recyclerNuevaAsignacion.getChildAdapterPosition(
-                        it
-                    )
-                ).nombreClase,
-                Toast.LENGTH_SHORT
-            ).show();
-            var intent = Intent(this, PantallaClaseDetalle::class.java)
-            startActivity(intent)
-        });
-        recyclerNuevaAsignacion.itemAnimator = DefaultItemAnimator();
 
         //cargar info principal
         cargarInformacionPersonal();
+
+
+
+
+
+
+
 
 
         //llevar al menu
@@ -112,20 +103,34 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     }
 
 
-    fun cargarClases() {
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
+    fun cargarCursos() {
+        var recyclerNuevaAsignacion: RecyclerView? = null
+        recyclerNuevaAsignacion = findViewById(R.id.print_recycler_view_nueva_asignacion);
+
+        //horizontal layout
+        var layoutManager: LinearLayoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+        //asignar layout al recycler view
+        recyclerNuevaAsignacion.layoutManager = layoutManager;
+        recyclerNuevaAsignacion.adapter = RecyclerAdapterCursos(this.maestro.cursos, View.OnClickListener {
+            Toast.makeText(
+                applicationContext,
+                "has seleccionado el curso: " + this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)).nombre,
+                Toast.LENGTH_SHORT
+            ).show();
+            var intent = Intent(this, PantallaClases::class.java).putExtra("curso",this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)))
+            startActivity(intent)
+        });
+        recyclerNuevaAsignacion.itemAnimator = DefaultItemAnimator();
+
+
     }
 
+
+
     fun cargarInformacionPersonal() {
+        isLoadMtro=true;
         var email = fachadaNegocio.getEmail();
         fachadaNegocio.getUsuario(email);
 
@@ -134,11 +139,31 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
     override fun update(p0: Observable?, p1: Any?) {
 
-        this.maestro = p1 as Usuario;
+        if(isLoadMtro==true){
+            var usuario =p1 as Usuario;
+            this.maestro.email=usuario.email;
+            this.maestro.key=usuario.key
+            this.maestro.nombre=usuario.nombre;
+            this.maestro.lastname=usuario.lastname;
 
-        var nombreMtro: TextView = findViewById(R.id.prin_nombre_mtro);
-        var name_lastname=maestro.nombre+" "+maestro.lastname;
-        nombreMtro.setText(name_lastname);
+            var nombreMtro: TextView = findViewById(R.id.prin_nombre_mtro);
+            var name_lastname=maestro.nombre+" "+maestro.lastname;
+            nombreMtro.setText(name_lastname);
+            isLoadMtro=false;
+            isLoadCursos=true
+            //crear array de datos para las clases
+
+            fachadaNegocio.getAulas(this.maestro.key.toString())
+
+
+        }else if(isLoadCursos==true){
+            isLoadCursos=false
+            var cursos=p1 as ArrayList<Curso>;
+            this.maestro.cursos=cursos;
+            cargarCursos();
+
+        }
+
 
     }
 
@@ -184,6 +209,14 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         }
     }
 
+    override fun startActivityForResult(intent: Intent?, requestCode: Int) {
+        super.startActivityForResult(intent, requestCode)
+        if(requestCode==1){
+            if(requestCode==Activity.RESULT_OK){
+                cargarCursos();
+            }
+        }
+    }
 
 
 }

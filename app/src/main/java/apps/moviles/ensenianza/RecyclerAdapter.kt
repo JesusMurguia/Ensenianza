@@ -1,14 +1,14 @@
 package apps.moviles.ensenianza
 
+import Dominio.Clase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import apps.moviles.ensenianza.R
 
-class RecyclerAdapter(val clases: ArrayList<Clase>,val listener:View.OnClickListener) : View.OnClickListener,
+class RecyclerAdapter(val clases: ArrayList<Clase>, val listener:View.OnClickListener) : View.OnClickListener,
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 

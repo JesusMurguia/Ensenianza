@@ -5,6 +5,7 @@ import Dominio.Maestro
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -50,7 +51,8 @@ class PantallaCrearAula : AppCompatActivity() {
 
             }else{
                 Toast.makeText(this,"creando aula..",Toast.LENGTH_SHORT).show();
-                fachadaNegocio.crearAula(maestro.key.toString(), Curso(nombre_aula.text.toString()));
+                fachadaNegocio.crearAula(maestro.key.toString(), Curso(nombre_aula.text.toString(),descripcion.text.toString()));
+                setResult(Activity.RESULT_OK)
             }
 
         }
