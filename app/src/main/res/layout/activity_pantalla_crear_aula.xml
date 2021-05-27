@@ -69,7 +69,7 @@
         android:id="@+id/code_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="88dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Codigo: "
         android:textColor="@color/white"
@@ -80,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/code"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/code"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/code"
@@ -88,13 +88,13 @@
         android:layout_height="wrap_content"
 
         android:fontFamily="@font/roboto_bold"
-        android:text=""
+
         android:textColor="@color/white"
         android:textSize="23sp"
 
         app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
 
@@ -172,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView21" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/regresar_crear_aula"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/transparent_button"
@@ -187,7 +187,7 @@
 
 
     <ImageButton
-        android:id="@+id/btn_crear_asignacion"
+        android:id="@+id/btn_crear_aula"
         android:layout_width="106dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
@@ -206,9 +206,9 @@
         android:text="Crear"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_asignacion"
-        app:layout_constraintEnd_toEndOf="@+id/btn_crear_asignacion"
-        app:layout_constraintStart_toStartOf="@+id/btn_crear_asignacion"
-        app:layout_constraintTop_toTopOf="@+id/btn_crear_asignacion" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_aula"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_aula"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_aula"
+        app:layout_constraintTop_toTopOf="@+id/btn_crear_aula" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

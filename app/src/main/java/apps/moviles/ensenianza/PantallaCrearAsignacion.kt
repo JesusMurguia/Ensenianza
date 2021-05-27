@@ -56,7 +56,7 @@ class PantallaCrearAsignacion : AppCompatActivity() {
                 var asignacion=Actividad(titulo.text.toString(),subtitulo.text.toString(),descripcion.text.toString())
                 var fachadaNegocio = Factory.crearFachadaNegocio();
                 clase.idClase?.let { it1 -> fachadaNegocio.crearAsignacion(it1, asignacion) };
-                Toast.makeText(this,"creando actividad..", Toast.LENGTH_SHORT).show();
+               this.finish();
             }
 
 

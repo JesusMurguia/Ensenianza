@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_pantalla_crear_clase.*
 import java.util.*
 
 class PantallaCrearClase : AppCompatActivity(), Observer {
@@ -33,7 +34,7 @@ class PantallaCrearClase : AppCompatActivity(), Observer {
         var txt_nombreProfesor = findViewById(R.id.txt_nombreProfesor) as TextView;
         var nombre_aula = findViewById(R.id.nombre_clase) as EditText;
         var descripcion = findViewById(R.id.descripcion) as EditText;
-        var btn_crear = findViewById(R.id.btn_crear_asignacion) as ImageButton;
+        var btn_crear = findViewById(R.id.btn_crear_clase) as ImageButton;
 
         curso_id = intent.getStringExtra("curso_id");
           usuario = intent.getSerializableExtra("usuario") as Usuario;
@@ -75,6 +76,8 @@ class PantallaCrearClase : AppCompatActivity(), Observer {
 
                     }
 
+
+
         }
 
 
@@ -83,7 +86,9 @@ class PantallaCrearClase : AppCompatActivity(), Observer {
 
 
 
-
+        regresar_crear_clase.setOnClickListener{
+            this.finish();
+        }
 
 
 

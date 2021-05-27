@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verdeAlto"
-    tools:context=".PantallaCrearAula">
+    tools:context=".PantallaCrearClase">
 
     <ImageButton
         android:id="@+id/imageButton9"
@@ -14,7 +14,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/transparent_button"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_clase"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/descripcion"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView21" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/regresar_crear_clase"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/transparent_button"
@@ -156,7 +156,7 @@
 
 
     <ImageButton
-        android:id="@+id/btn_crear_asignacion"
+        android:id="@+id/btn_crear_clase"
         android:layout_width="106dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
@@ -176,9 +176,8 @@
         android:text="Crear"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_asignacion"
-        app:layout_constraintEnd_toEndOf="@+id/btn_crear_asignacion"
-        app:layout_constraintStart_toStartOf="@+id/btn_crear_asignacion"
-        app:layout_constraintTop_toTopOf="@+id/btn_crear_asignacion" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_clase"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_clase"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_clase"
+        app:layout_constraintTop_toTopOf="@+id/btn_crear_clase"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
