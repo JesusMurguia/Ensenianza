@@ -8,6 +8,7 @@ import Negocio.FachadaNegocio
 import Negocio.Factory
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -15,13 +16,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
+import kotlinx.android.synthetic.main.activity_pantalla_unirse_a_clase.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PantallaPrincipal : AppCompatActivity(), Observer {
 
-
+    var materias_id = ArrayList<String>()
     var clases = ArrayList<Clase>();
     var tutoriales = ArrayList<Tutorial>();
     var getTutor = false;
@@ -34,6 +41,9 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
     //GUI
     lateinit var nombre_alumno: TextView;
     lateinit var nombre_clase: TextView;
+    lateinit var curso_id: String
+    lateinit var curso_key: String
+    lateinit var maestro: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,14 +51,20 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
 
         setContentView(R.layout.activity_pantalla_principal);
 
+        var bundle=intent.extras
+        if(bundle!=null){
+            curso_id=bundle.get("curso_id") as String
+            curso_key=bundle.get("curso_key") as String
+        }
+
         //inicializar GUI
         nombre_alumno = findViewById(R.id.prin_tutor_nombre_alumno);
         nombre_clase = findViewById(R.id.prin_tutor_grado_grupo);
 
-        var recycler: RecyclerView? = null
+
         var recyclerTutorial: RecyclerView? = null
         // asignar recycler
-        recycler = findViewById(R.id.print_recycler_view_clases);
+
         recyclerTutorial = findViewById(R.id.print_recycler_view_tutorias);
 
         fachadaNegocio = Factory.crearFachadaNegocio();
@@ -57,25 +73,8 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
 
         cargarInformacionPersonal();
 
-        //crear array de datos para las clases
-        cargarClases()
 
-        //horizontal layout
-        var layoutManager: LinearLayoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        //asignar layout al recycler view
-        recycler.layoutManager = layoutManager;
-        recycler.adapter = RecyclerAdapter(clases, View.OnClickListener {
-            Toast.makeText(
-                applicationContext,
-                "has seleccionado la claseeeee: " + clases.get(recycler.getChildAdapterPosition(it)).nombreClase,
-                Toast.LENGTH_SHORT
-            ).show();
-            var intent = Intent(this, PantallaClaseDetalle::class.java)
-            startActivity(intent)
-        });
-        recycler.itemAnimator = DefaultItemAnimator();
 
         //crear array de datos para los tutoriales
         cargartutoriales();
@@ -152,18 +151,166 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
 
     }
 
+    fun cargarProfesor() {
+        var rootRef = FirebaseDatabase.getInstance()
+        var cursosfb = rootRef.getReference("cursos/${tutor.alumno!!.curso_key}")
+
+        cursosfb.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                    var maestro_id=dataSnapshot.child("maestro_id").getValue(String::class.java).toString()
+                    println(maestro_id)
+
+                    var maestrosfb = rootRef.getReference("maestros/${maestro_id}")
+                maestrosfb.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+
+                        var user_id=dataSnapshot.child("user_id").getValue(String::class.java).toString()
+                        println(user_id)
+
+                        var usuariosfb = rootRef.getReference("users/${user_id}")
+                        usuariosfb.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                // This method is called once with the initial value and again
+                                // whenever data at this location is updated.
+
+                                var nombre=dataSnapshot.child("nombre").getValue(String::class.java).toString()
+                                var lastname=dataSnapshot.child("lastname").getValue(String::class.java).toString()
+                                println(nombre)
+                                println(lastname)
+                                maestro= "$nombre $lastname"
+                                cargarClases()
+
+
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                // Failed to read value
+                                Log.w("CodigoClases", "Failed to read value.", error.toException())
+                            }
+
+                        })
+
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        // Failed to read value
+                        Log.w("CodigoClases", "Failed to read value.", error.toException())
+                    }
+
+                })
+
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("CodigoClases", "Failed to read value.", error.toException())
+            }
+
+        })
+
+
+
+
+
+
+    }
+
 
     fun cargarClases() {
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
+
+
+        var fetched=false
+        var rootRef = FirebaseDatabase.getInstance()
+        println("aaaaaaaaa"+tutor.alumno!!.curso_key)
+        var cursosfb = rootRef.getReference("cursos/${tutor.alumno!!.curso_key}")
+        cursosfb.child("materias_id").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                for (i in dataSnapshot.children) {
+                    var materia_id=i.child("materia_id").getValue(String::class.java).toString()
+                    materias_id.add(materia_id)
+                    fetched=true
+                }
+                if(!fetched){
+                    Toast.makeText(applicationContext,"No se encontró el curso",Toast.LENGTH_SHORT).show()
+                }
+                var actividades_id=ArrayList<String>()
+                var materiasfb = rootRef.getReference("materias")
+                materiasfb.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+
+                        for (i in dataSnapshot.children) {
+
+                            for (j in materias_id){
+                                if(i.key.toString()==j){
+                                    println(i.key)
+                                    var c= Clase(i.child("nombre").getValue(String::class.java).toString(),maestro,R.drawable.clasewhite,i.key.toString())
+
+
+                                    for (a in i.child("actividades_id").children){
+                                        actividades_id.add(a.child("actividad_id").getValue(Integer::class.java).toString())
+                                        println(a.child("actividad_id").getValue(Integer::class.java).toString())
+                                    }
+                                    clases.add(c)
+                                    break
+                                }
+                            }
+                        }
+                        var recycler: RecyclerView? = null
+                        recycler = findViewById(R.id.print_recycler_view_clases);
+                        //horizontal layout
+                        var layoutManager: LinearLayoutManager =
+                            LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false);
+                        var idclase:Clase
+                        //asignar layout al recycler view
+                        recycler.layoutManager = layoutManager;
+                        recycler.adapter = RecyclerAdapter(clases, View.OnClickListener {
+                            idclase=clases[recycler.getChildAdapterPosition(it)]
+                            Toast.makeText(
+                                applicationContext,
+                                "has seleccionado la claseeeee: " + clases.get(recycler.getChildAdapterPosition(it)).nombreClase,
+                                Toast.LENGTH_SHORT
+                            ).show();
+                            var intent = Intent(applicationContext, PantallaClaseDetalle::class.java)
+                            intent.putExtra("ids",actividades_id)
+                            intent.putExtra("clase",idclase)
+                            startActivity(intent)
+                        });
+                        recycler.itemAnimator = DefaultItemAnimator();
+
+                        if(!fetched){
+                            Toast.makeText(applicationContext,"No se encontró el curso",Toast.LENGTH_SHORT).show()
+                        }
+
+
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        // Failed to read value
+                        Log.w("CodigoClases", "Failed to read value.", error.toException())
+                    }
+
+                })
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("CodigoClases", "Failed to read value.", error.toException())
+            }
+
+        })
+
+
+
+
+
+
     }
 
     fun cargartutoriales() {
@@ -196,7 +343,18 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
             var nombre_apellido = this.tutor.alumno!!.nombre + " " + tutor.alumno!!.lastname
             this.nombre_alumno.setText(nombre_apellido);
             this.nombre_clase.setText(this.tutor.alumno!!.curso_id);
-            println("aaaaaaaaaaaaaa"+this.tutor.alumno!!.key)
+            println("aaaaaaaaaaaaaa"+this.tutor.alumno!!.curso_id)
+
+            //si no tiene curso se manda directo a la pantalla unirse a cursos
+            if(this.tutor.alumno!!.curso_id==""){
+                intent=Intent(this, PantallaUnirseAClase::class.java)
+                intent.putExtra("alumnoKey", tutor.alumno?.key)
+                startActivity(intent)
+            }
+
+
+
+            cargarProfesor()
 
         }
 

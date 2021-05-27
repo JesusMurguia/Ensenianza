@@ -6,10 +6,12 @@ import apps.moviles.ensenianza.R
 
 class Clase : Parcelable {
 
+
     var nombreClase: String? = ""
     var nombreProfesor: String? = ""
     var icono: Int = -1
     var idClase: String? = ""
+
 
     constructor(clase_id: String) {
         this.idClase = clase_id
@@ -25,12 +27,16 @@ class Clase : Parcelable {
         nombreClase = source.readString()
         nombreProfesor = source.readString()
         icono = source.readInt()
+        idClase= source.readString()
     }
 
-    constructor(nombreClase: String?, nombreProfesor: String?, icono: Int) {
+
+    constructor(nombreClase: String?, nombreProfesor: String?,icono: Int,idclase:String?) {
+
         this.nombreClase = nombreClase
         this.nombreProfesor = nombreProfesor
         this.icono = icono
+        this.idClase=idclase
     }
 
     override fun describeContents(): Int {
@@ -41,6 +47,7 @@ class Clase : Parcelable {
         p0?.writeString(nombreClase)
         p0?.writeString(nombreProfesor)
         p0?.writeInt(icono)
+        p0?.writeString(idClase)
     }
 
     companion object CREATOR : Parcelable.Creator<Clase> {

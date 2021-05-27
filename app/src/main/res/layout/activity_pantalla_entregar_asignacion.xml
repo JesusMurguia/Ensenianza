@@ -29,7 +29,7 @@
         app:srcCompat="@color/boton" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/iv_icono"
         android:layout_width="102dp"
         android:layout_height="114dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
@@ -39,7 +39,7 @@
         app:srcCompat="@drawable/geografiawhite" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/et_nombreMateria"
         android:layout_width="175dp"
         android:layout_height="32dp"
         android:fontFamily="@font/roboto_bold"
@@ -49,10 +49,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_icono" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/et_nombreProfe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -62,10 +62,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nombreMateria" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/et_asigacion_id"
         android:layout_width="212dp"
         android:layout_height="35dp"
         android:layout_marginTop="28dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/et_nombreAsignacion"
         android:layout_width="345dp"
         android:layout_height="36dp"
         android:layout_marginTop="20dp"
@@ -92,10 +92,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/et_asigacion_id" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/et_descripcion"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginStart="32dp"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nombreAsignacion" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -119,7 +119,7 @@
         android:layout_marginTop="44dp"
         android:background="@color/boton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/et_descripcion"
         app:srcCompat="@drawable/border_shadow" />
 
     <ImageButton
@@ -142,7 +142,7 @@
         android:layout_marginEnd="28dp"
         android:background="@color/boton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/et_descripcion"
         app:srcCompat="@drawable/border_shadow" />
 
     <ImageButton

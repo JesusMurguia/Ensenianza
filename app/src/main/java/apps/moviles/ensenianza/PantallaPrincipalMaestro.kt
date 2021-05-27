@@ -103,6 +103,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     }
 
 
+
     fun cargarCursos() {
         var recyclerNuevaAsignacion: RecyclerView? = null
         recyclerNuevaAsignacion = findViewById(R.id.print_recycler_view_nueva_asignacion);
@@ -113,15 +114,23 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
         //asignar layout al recycler view
         recyclerNuevaAsignacion.layoutManager = layoutManager;
-        recyclerNuevaAsignacion.adapter = RecyclerAdapterCursos(this.maestro.cursos, View.OnClickListener {
-            Toast.makeText(
-                applicationContext,
-                "has seleccionado el curso: " + this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)).nombre,
-                Toast.LENGTH_SHORT
-            ).show();
-            var intent = Intent(this, PantallaClases::class.java).putExtra("curso",this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)))
-            startActivity(intent)
-        });
+        recyclerNuevaAsignacion.adapter =
+            RecyclerAdapterCursos(this.maestro.cursos, View.OnClickListener {
+                Toast.makeText(
+                    applicationContext,
+                    "has seleccionado el curso: " + this.maestro.cursos.get(
+                        recyclerNuevaAsignacion.getChildAdapterPosition(
+                            it
+                        )
+                    ).nombre,
+                    Toast.LENGTH_SHORT
+                ).show();
+                var intent = Intent(this, PantallaClases::class.java).putExtra(
+                    "curso",
+                    this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it))
+                )
+                startActivity(intent)
+            });
         recyclerNuevaAsignacion.itemAnimator = DefaultItemAnimator();
 
 
