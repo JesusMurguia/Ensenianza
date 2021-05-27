@@ -35,7 +35,6 @@ class PantallaClaseDetalle : AppCompatActivity() {
             iconoClaseGeografia.setImageResource(clase.icono)
             textMateriaGeografia.text=clase.nombre
             textMtraGeografia.text=clase.nombreProfesor
-            ids= bundle.get("ids") as ArrayList<String>
 
 
 
@@ -49,7 +48,7 @@ class PantallaClaseDetalle : AppCompatActivity() {
                     // whenever data at this location is updated.
 
                     for (i in dataSnapshot.children) {
-                        for(id in ids){
+                        for(id in clase.actividades){
                             if(i.key==id){
                                 var titulo=i.child("titulo").getValue(String::class.java).toString()
                                 var subtitulo=i.child("subtitulo").getValue(String::class.java).toString()

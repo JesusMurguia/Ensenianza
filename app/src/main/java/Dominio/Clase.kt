@@ -13,7 +13,7 @@ class Clase : Serializable {
     var nombreProfesor: String? = ""
     var icono: Int = -1
     var idClase: String? = ""
-    lateinit var actividades:ArrayList<Asignacion>;
+    lateinit var actividades:ArrayList<String>;
 
 
     constructor(clase_id: String) {
