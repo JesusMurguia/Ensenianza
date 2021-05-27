@@ -100,7 +100,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
           var intent=Intent(this,PantallaCrearAula::class.java);
 
             intent.putExtra("usuario",this.maestro);
-            startActivityForResult(intent,1)
+            startActivity(intent)
           //t.makeText(this, "agregar mas aulas..", Toast.LENGTH_LONG).show();
         }
 
@@ -221,18 +221,8 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         }
     }
 
-    override fun startActivityForResult(intent: Intent?, requestCode: Int, options: Bundle?) {
-        super.startActivityForResult(intent, requestCode, options)
-    }
-    override fun startActivityForResult(intent: Intent?, requestCode: Int) {
 
-        if (requestCode == 1) {
-            if (requestCode == Activity.RESULT_OK) {
-                isLoadCursos = true;
-                fachadaNegocio.getAulas(this.maestro.key.toString())
-            }
-        }
-    }
+
 
 
 }
