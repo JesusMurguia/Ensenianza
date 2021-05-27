@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enseñanza">
-        <activity android:name=".PantallaAulas"></activity>
+        <activity android:name=".PantallaCrearAsignacion"></activity>
+        <activity android:name=".PantallaAulas" />
         <activity android:name=".PantallaCrearClase" />
         <activity android:name=".PantallaUnirseAClase" />
         <activity android:name=".PantallaCrearAula" />
