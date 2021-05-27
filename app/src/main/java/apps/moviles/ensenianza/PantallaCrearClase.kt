@@ -1,7 +1,6 @@
 package apps.moviles.ensenianza
 
 import Dominio.Clase
-import Dominio.Curso
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
@@ -34,7 +33,7 @@ class PantallaCrearClase : AppCompatActivity(), Observer {
         var txt_nombreProfesor = findViewById(R.id.txt_nombreProfesor) as TextView;
         var nombre_aula = findViewById(R.id.nombre_clase) as EditText;
         var descripcion = findViewById(R.id.descripcion) as EditText;
-        var btn_crear = findViewById(R.id.btn_crear) as ImageButton;
+        var btn_crear = findViewById(R.id.btn_crear_asignacion) as ImageButton;
 
         curso_id = intent.getStringExtra("curso_id");
           usuario = intent.getSerializableExtra("usuario") as Usuario;

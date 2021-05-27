@@ -7,13 +7,14 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/cono"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enseñanza">
-        <activity android:name=".PantallaAulas"></activity>
+        <activity android:name=".PantallaCrearAsignacion"></activity>
+        <activity android:name=".PantallaAulas" />
         <activity android:name=".PantallaCrearClase" />
         <activity android:name=".PantallaUnirseAClase" />
         <activity android:name=".PantallaCrearAula" />

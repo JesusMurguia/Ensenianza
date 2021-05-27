@@ -129,6 +129,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
             RecyclerAdapterCursos(this.maestro.cursos, View.OnClickListener {
                 var clases =
                     this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it)).clases;
+                var curso=  this.maestro.cursos.get(recyclerNuevaAsignacion.getChildAdapterPosition(it));
                 Toast.makeText(
                     applicationContext,
                     "has seleccionado el curso: " + this.maestro.cursos.get(
@@ -139,6 +140,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
                 ).show();
                 var intent = Intent(this, PantallaClases::class.java)
                 intent.putExtra("clases", clases)
+                intent.putExtra("curso", curso)
                 intent.putExtra("nombreMtro", this.maestro.nombre + " " + this.maestro.lastname);
                 startActivity(intent)
             });
@@ -233,10 +235,10 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode==1){
-            if (resultCode === RESULT_OK) {
+
                 isLoadCursos=true;
                 fachadaNegocio.getAulas(this.maestro.key.toString())
-            }
+
 
         }else if(requestCode==3){
             Toast.makeText(this,"se serro aulas",Toast.LENGTH_SHORT).show();

@@ -14,7 +14,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/transparent_button"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crear"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/descripcion"
@@ -63,6 +63,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_clase"
         app:srcCompat="@drawable/rounded_text" />
+
+
+    <TextView
+        android:id="@+id/code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Codigo: "
+        android:textColor="@color/white"
+        android:textSize="23sp"
+
+
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/code"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/roboto_bold"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="23sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
 
     <EditText
         android:id="@+id/nombre_clase"
@@ -152,10 +186,8 @@
         app:srcCompat="@drawable/flechaladogris" />
 
 
-
-
     <ImageButton
-        android:id="@+id/btn_crear"
+        android:id="@+id/btn_crear_asignacion"
         android:layout_width="106dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
@@ -166,7 +198,6 @@
         app:srcCompat="@drawable/border_white" />
 
 
-
     <TextView
         android:id="@+id/textView33"
         android:layout_width="wrap_content"
@@ -175,9 +206,9 @@
         android:text="Crear"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_crear"
-        app:layout_constraintEnd_toEndOf="@+id/btn_crear"
-        app:layout_constraintStart_toStartOf="@+id/btn_crear"
-        app:layout_constraintTop_toTopOf="@+id/btn_crear" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_asignacion"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_asignacion"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_asignacion"
+        app:layout_constraintTop_toTopOf="@+id/btn_crear_asignacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

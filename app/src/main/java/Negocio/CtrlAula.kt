@@ -50,7 +50,7 @@ class CtrlAula : Observer, Observable {
         myRef.child("descripcion").setValue(curso.descripcion);
         myRef.child("maestro_id").setValue(userId);
         this.keyCurso = myRef.key.toString();
-
+        myRef.child("codigo").setValue(  this.keyCurso.substring(this.keyCurso.length-5));
 
         //ctrlMaestro para poder tener la key del mtro
         this.negocio = CtrlMaestro();
@@ -165,9 +165,9 @@ class CtrlAula : Observer, Observable {
             var keyMtro = p1 as String
             val myRefMtro = this.database.getReference("maestros/${keyMtro}");
             myRefMtro.child("cursos_id").push().child("curso_id").setValue(this.keyCurso);
-
+var code=this.keyCurso.substring(this.keyCurso.length-5);
             setChanged();
-            notifyObservers("listo");
+            notifyObservers(code);
             clearChanged();
         }
     }

@@ -7,6 +7,7 @@ class Asignacion:Serializable{
 
 
      lateinit var nombre: String
+
      lateinit var  fechaInicio: String
      lateinit var fechaEntrega: String
     lateinit var asignacion_id: String

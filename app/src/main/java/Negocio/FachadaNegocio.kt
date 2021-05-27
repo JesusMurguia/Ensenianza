@@ -77,6 +77,11 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
         negocio.agregarClase(curso_id,clase);
     }
 
+    override fun crearAsignacion(materia_id: String, actividad: Actividad) {
+        var negocio: CtrlAsignacion = CtrlAsignacion();
+        negocio.crearAsignacion(materia_id,actividad);
+    }
+
 
     override fun cerrarSesion() {
         var negocio: CtrlUsuario = CtrlUsuario();

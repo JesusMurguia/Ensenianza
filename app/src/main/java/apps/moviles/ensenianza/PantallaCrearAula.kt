@@ -7,6 +7,7 @@ import Negocio.Factory
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -32,7 +33,7 @@ class PantallaCrearAula : AppCompatActivity(),Observer {
         var txt_nombreProfesor=findViewById(R.id.txt_nombreProfesor) as TextView;
         var nombre_aula=findViewById(R.id.nombre_clase) as EditText;
         var descripcion=findViewById(R.id.descripcion) as EditText;
-        var btn_crear=findViewById(R.id.btn_crear) as ImageButton;
+        var btn_crear=findViewById(R.id.btn_crear_asignacion) as ImageButton;
 
 
 
@@ -67,10 +68,14 @@ class PantallaCrearAula : AppCompatActivity(),Observer {
     override fun update(p0: Observable?, p1: Any?) {
         var ready =p1 as String
 
-        if(ready.equals("listo")){
+        if(!ready.equals("")){
             val returnIntent = Intent()
-            setResult(Activity.RESULT_OK,returnIntent)
-            finish()
+            var code=findViewById(R.id.code) as TextView;
+            var code_text=findViewById(R.id.code_text) as TextView;
+            code_text.visibility=View.VISIBLE;
+            code.setText(ready);
+           // setResult(Activity.RESULT_OK,returnIntent)
+            //finish()
         }
     }
 }

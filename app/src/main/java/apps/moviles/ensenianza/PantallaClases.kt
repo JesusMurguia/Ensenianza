@@ -4,11 +4,13 @@ import Dominio.Clase
 import Dominio.Curso
 import Negocio.Factory
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pantalla_clase.view.*
 import kotlinx.android.synthetic.main.activity_pantalla_mensajes.*
@@ -18,8 +20,9 @@ import kotlin.collections.ArrayList
 class PantallaClases : AppCompatActivity(), Observer {
     var adapter: ClasesAdapter? = null
     var clases = ArrayList<Clase>()
+
     lateinit var curso: Curso;
-    var   clasesAux=ArrayList<Clase>();
+    var clasesAux = ArrayList<Clase>();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +32,16 @@ class PantallaClases : AppCompatActivity(), Observer {
         var fachadaNegocio = Factory.crearFachadaNegocio();
 
         fachadaNegocio.addObserver(this);
-        var mtro=""
+        var mtro = ""
         var bundle = intent.extras
         if (bundle != null) {
             clasesAux = bundle.get("clases") as ArrayList<Clase>
-            mtro=bundle.get("nombreMtro") as String
+            curso = bundle.get("curso") as Curso
+            mtro = bundle.get("nombreMtro") as String
         }
 
         for (j in clasesAux) {
-            fachadaNegocio.getClase(j.idClase,mtro)
+            fachadaNegocio.getClase(j.idClase, mtro)
 
         }
 
@@ -46,14 +50,14 @@ class PantallaClases : AppCompatActivity(), Observer {
 
     fun cargarClases() {
 
-        adapter = ClasesAdapter(this, clases);
+        adapter = ClasesAdapter(this, clases,curso);
         gridview.adapter = adapter;
     }
 
     override fun update(p0: Observable?, p1: Any?) {
-      var clase =p1 as Clase
+        var clase = p1 as Clase
         clases.add(clase)
-        if(clases.size==clasesAux.size){
+        if (clases.size == clasesAux.size) {
             cargarClases();
         }
     }
@@ -62,10 +66,12 @@ class PantallaClases : AppCompatActivity(), Observer {
 class ClasesAdapter : BaseAdapter {
     var clases = ArrayList<Clase>()
     var contexto: Context? = null
+    lateinit var curso: Curso;
 
-    constructor(contexto: Context, clases: ArrayList<Clase>) {
+    constructor(contexto: Context, clases: ArrayList<Clase>,curso:Curso) {
         this.contexto = contexto
         this.clases = clases
+        this.curso=curso;
     }
 
 
@@ -78,6 +84,16 @@ class ClasesAdapter : BaseAdapter {
         vista.tv_nombreProfesor.setText(clase.nombreProfesor)
         vista.icono.setImageResource(clase.icono)
         vista.setBackgroundResource(R.drawable.rounded_edit_text)
+        vista.setOnClickListener {
+            Toast.makeText(contexto, "nombre de la clase" + clase.nombreProfesor, Toast.LENGTH_SHORT)
+                .show();
+
+            var intent= Intent(contexto,PantallaCrearAsignacion::class.java);
+            intent.putExtra("clase",clase);
+            intent.putExtra("curso",curso);
+            contexto!!.startActivity(intent);
+
+        }
 
         return vista
     }
