@@ -14,7 +14,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/transparent_button"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crear"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/descripcion"
@@ -155,7 +155,7 @@
 
 
     <ImageButton
-        android:id="@+id/btn_crear"
+        android:id="@+id/btn_crear_asignacion"
         android:layout_width="106dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
@@ -175,9 +175,9 @@
         android:text="Crear"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_crear"
-        app:layout_constraintEnd_toEndOf="@+id/btn_crear"
-        app:layout_constraintStart_toStartOf="@+id/btn_crear"
-        app:layout_constraintTop_toTopOf="@+id/btn_crear" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_crear_asignacion"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_asignacion"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_asignacion"
+        app:layout_constraintTop_toTopOf="@+id/btn_crear_asignacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
