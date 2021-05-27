@@ -1,8 +1,9 @@
 package Dominio
 
+import java.io.Serializable
 import java.util.*
 
-class Asignacion{
+class Asignacion:Serializable{
 
 
      lateinit var nombre: String

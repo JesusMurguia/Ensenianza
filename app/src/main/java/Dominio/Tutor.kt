@@ -5,7 +5,7 @@ import android.os.Parcelable
 import java.io.Serializable
 
 
-class Tutor : Usuario ,Parcelable{
+class Tutor : Usuario ,Serializable{
     var alumno: Alumno? = null
 
 

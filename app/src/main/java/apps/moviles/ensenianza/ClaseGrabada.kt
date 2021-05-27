@@ -2,8 +2,9 @@ package apps.moviles.ensenianza
 import Dominio.Clase
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
-class ClaseGrabada : Parcelable{
+class ClaseGrabada : Serializable{
 
     var fecha: String?=""
     var thumbnail: Int=-1
@@ -15,32 +16,9 @@ class ClaseGrabada : Parcelable{
 
 
 
-    constructor(source:Parcel):this() {
-        fecha = source.readString()
-        thumbnail = source.readInt()
-    }
-
     constructor(fecha: String?,thumbnail: Int,) {
         this.fecha = fecha
         this.thumbnail = thumbnail
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        p0?.writeString(fecha)
-        p0?.writeInt(thumbnail)
-    }
-
-    companion object CREATOR : Parcelable.Creator<Clase> {
-        override fun createFromParcel(parcel: Parcel): Clase {
-            return Clase(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Clase?> {
-            return arrayOfNulls(size)
-        }
-    }
 }

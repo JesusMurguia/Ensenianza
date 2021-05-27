@@ -37,7 +37,7 @@ class PantallaCrearClase : AppCompatActivity(), Observer {
         var btn_crear = findViewById(R.id.btn_crear) as ImageButton;
 
         curso_id = intent.getStringExtra("curso_id");
-          usuario = intent.getParcelableExtra("usuario") as Usuario;
+          usuario = intent.getSerializableExtra("usuario") as Usuario;
 
 
         var name_lastname = "  Mtro. " + usuario.nombre + " " + usuario.lastname + "  ";
