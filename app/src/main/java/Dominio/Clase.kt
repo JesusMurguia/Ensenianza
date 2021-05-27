@@ -9,6 +9,7 @@ class Clase : Parcelable {
 
 
     var nombre: String? = ""
+    var descripcion: String? = ""
     var nombreProfesor: String? = ""
     var icono: Int = -1
     var idClase: String? = ""

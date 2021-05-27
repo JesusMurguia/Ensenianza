@@ -31,6 +31,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     var clases = ArrayList<Clase>();
 
     lateinit var maestro: Maestro;
+    lateinit var usuario: Usuario;
 
 
     //crear fachada
@@ -93,8 +94,14 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
         //btn floatin + clases
         prin_mtro_floatingBtn_mas_clase.setOnClickListener() {
-            startActivityForResult(Intent(this, PantallaClases::class.java), 1)
-            Toast.makeText(this, "agregar mas clases..", Toast.LENGTH_LONG).show();
+
+            var intent=Intent(this,PantallaAulas::class.java);
+            intent.putExtra("usuario",this.maestro);
+         //  intent.putParcelableArrayListExtra("cursos",this.maestro.cursos);
+
+
+            startActivityForResult(intent,3)
+
         }
         //btn floatin + aulas
         prin_mtro_floatingBtn_mas_aula.setOnClickListener() {
@@ -152,7 +159,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
     override fun update(p0: Observable?, p1: Any?) {
 
         if (isLoadMtro == true) {
-            var usuario = p1 as Usuario;
+            usuario = p1 as Usuario;
             this.maestro.email = usuario.email;
             this.maestro.key = usuario.key
             this.maestro.nombre = usuario.nombre;
@@ -230,6 +237,11 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
                 isLoadCursos=true;
                 fachadaNegocio.getAulas(this.maestro.key.toString())
             }
+
+        }else if(requestCode==3){
+            Toast.makeText(this,"se serro aulas",Toast.LENGTH_SHORT).show();
+            isLoadCursos=true;
+            fachadaNegocio.getAulas(this.maestro.key.toString())
 
         }
     }

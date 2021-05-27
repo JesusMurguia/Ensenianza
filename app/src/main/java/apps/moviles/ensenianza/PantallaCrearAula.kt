@@ -30,7 +30,7 @@ class PantallaCrearAula : AppCompatActivity(),Observer {
 
         //gui
         var txt_nombreProfesor=findViewById(R.id.txt_nombreProfesor) as TextView;
-        var nombre_aula=findViewById(R.id.nombre_aula) as EditText;
+        var nombre_aula=findViewById(R.id.nombre_clase) as EditText;
         var descripcion=findViewById(R.id.descripcion) as EditText;
         var btn_crear=findViewById(R.id.btn_crear) as ImageButton;
 

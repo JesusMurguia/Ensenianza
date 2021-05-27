@@ -29,4 +29,5 @@ interface iNegocio {
   fun crearAula(keyMaestro: String, curso: Curso);
   fun getAulas(user_id:String);
   fun getClase(clase_id:String?,nombreMtro:String);
+  fun agregarClase(curso_id:String,clase:Clase);
 }

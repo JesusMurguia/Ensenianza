@@ -14,13 +14,21 @@ import kotlin.collections.ArrayList
 
 class CtrlClase : Observable() {
 
+
+    lateinit var negocio: CtrlMaestro;
+    lateinit var database: FirebaseDatabase
+
     /**
      * Este metodo obtiene laa clase buscando por su id
      */
+
+
+
     fun getClase(materia_id: String?,nombreMtro:String) {
         var asignaciones=ArrayList<Asignacion>();
         var rootRef = FirebaseDatabase.getInstance()
         var ref = rootRef.getReference("materias/${materia_id}")
+
 
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -43,6 +51,31 @@ class CtrlClase : Observable() {
             }
 
         })
+    }
+
+
+    /**
+     *
+     * Este metodo asigna una clase a un curso
+     *
+     */
+    fun agregarClase(curso_id:String,clase:Clase)
+    {
+
+        database = FirebaseDatabase.getInstance()
+
+        //se ingresa curso a la tabla materias
+        val myRef = database.getReference("materias").push();
+
+        myRef.child("nombre").setValue(clase.nombre);
+        myRef.child("descripcion").setValue(clase.descripcion);
+        var keyClase= myRef.key.toString();
+
+       val myRefCurso = database.getReference("cursos/${curso_id}").child("materias_id").push()
+        myRefCurso.child("materia_id").setValue(keyClase);
+
+
+
     }
 
 
