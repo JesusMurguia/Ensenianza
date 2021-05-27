@@ -83,8 +83,7 @@ class PantallaCrearAula : AppCompatActivity(),Observer {
             var code_text=findViewById(R.id.code_text) as TextView;
             code_text.visibility=View.VISIBLE;
             code.setText(ready);
-           // setResult(Activity.RESULT_OK,returnIntent)
-            //finish()
+
         }
     }
 }
