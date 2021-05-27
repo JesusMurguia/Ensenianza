@@ -90,7 +90,7 @@ class ClasesAdapter : BaseAdapter {
 
             var intent= Intent(contexto,PantallaCrearAsignacion::class.java);
             intent.putExtra("clase",clase);
-         //   intent.putExtra("curso",curso);
+            intent.putExtra("curso",curso);
             contexto!!.startActivity(intent);
 
         }

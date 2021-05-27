@@ -235,10 +235,10 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode==1){
-            if (resultCode === RESULT_OK) {
+
                 isLoadCursos=true;
                 fachadaNegocio.getAulas(this.maestro.key.toString())
-            }
+
 
         }else if(requestCode==3){
             Toast.makeText(this,"se serro aulas",Toast.LENGTH_SHORT).show();

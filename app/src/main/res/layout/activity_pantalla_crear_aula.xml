@@ -64,6 +64,40 @@
         app:layout_constraintTop_toBottomOf="@+id/nombre_clase"
         app:srcCompat="@drawable/rounded_text" />
 
+
+    <TextView
+        android:id="@+id/code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Codigo: "
+        android:textColor="@color/white"
+        android:textSize="23sp"
+
+
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/code"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/roboto_bold"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="23sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_asignacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
+
     <EditText
         android:id="@+id/nombre_clase"
         android:layout_width="211dp"
@@ -152,8 +186,6 @@
         app:srcCompat="@drawable/flechaladogris" />
 
 
-
-
     <ImageButton
         android:id="@+id/btn_crear_asignacion"
         android:layout_width="106dp"
@@ -164,7 +196,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/border_white" />
-
 
 
     <TextView

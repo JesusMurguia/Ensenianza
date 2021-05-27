@@ -27,14 +27,15 @@ class PantallaCrearAsignacion : AppCompatActivity() {
         var subtitulo=findViewById(R.id.subtitulo) as EditText;
         var descripcion=findViewById(R.id.descripcion) as EditText;
 
-
+        var  curso=Curso();
+        var clase=Clase();
 
         var bundle = intent.extras
         if (bundle != null) {
-            var  clasesAux = bundle.get("clase") as Clase
-            var  curso = bundle.get("curso") as Curso
-            txt_nombreProfesor.setText(clasesAux.nombreProfesor);
-            et_nombreMateria.setText(clasesAux.nombre);
+              clase = bundle.get("clase") as Clase
+              curso = bundle.get("curso") as Curso
+            txt_nombreProfesor.setText(clase.nombreProfesor);
+            et_nombreMateria.setText(clase.nombre);
 
         }
 
@@ -54,8 +55,8 @@ class PantallaCrearAsignacion : AppCompatActivity() {
             }else{
                 var asignacion=Actividad(titulo.text.toString(),subtitulo.text.toString(),descripcion.text.toString())
                 var fachadaNegocio = Factory.crearFachadaNegocio();
-              //  fachadaNegocio.crearAsignacion(curso_id, asignacion);
-                Toast.makeText(this,"creando aula..", Toast.LENGTH_SHORT).show();
+                clase.idClase?.let { it1 -> fachadaNegocio.crearAsignacion(it1, asignacion) };
+                Toast.makeText(this,"creando actividad..", Toast.LENGTH_SHORT).show();
             }
 
 
