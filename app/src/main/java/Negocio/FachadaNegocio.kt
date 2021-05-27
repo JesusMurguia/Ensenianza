@@ -55,6 +55,7 @@ class FachadaNegocio : iNegocio, java.util.Observer, Observable() {
 
     override fun crearAula(keyMaestro: String, curso: Curso) {
         var negocio: CtrlAula = CtrlAula();
+        negocio.addObserver(this)
         negocio.crearAula(keyMaestro,curso);
     }
 

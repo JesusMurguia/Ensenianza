@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_pantalla_mensaje.view.*
 import kotlinx.android.synthetic.main.activity_pantalla_mensajes.*
 
 class PantallaMensajesMaestro : AppCompatActivity() {
+
     var adapter: MensajesAdapterMaestro? = null
     var mensajes = ArrayList<MensajeMaestro>()
     var usuario: Usuario? =null

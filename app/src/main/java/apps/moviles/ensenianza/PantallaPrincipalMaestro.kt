@@ -6,6 +6,7 @@ import Dominio.Maestro
 import Dominio.Usuario
 import Negocio.FachadaNegocio
 import Negocio.Factory
+import android.R.attr
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -100,7 +101,7 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
           var intent=Intent(this,PantallaCrearAula::class.java);
 
             intent.putExtra("usuario",this.maestro);
-            startActivity(intent)
+            startActivityForResult(intent,1)
           //t.makeText(this, "agregar mas aulas..", Toast.LENGTH_LONG).show();
         }
 
@@ -221,7 +222,17 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if(requestCode==1){
+            if (resultCode === RESULT_OK) {
+                isLoadCursos=true;
+                fachadaNegocio.getAulas(this.maestro.key.toString())
+            }
+
+        }
+    }
 
 
 

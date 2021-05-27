@@ -1,10 +1,13 @@
 package Dominio
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.io.Serializable
 
 
-class Tutor : Usuario ,Serializable{
+class Tutor : Usuario ,Parcelable{
     var alumno: Alumno? = null
+
 
 
    // constructor(nombre: String?, apellido: String?,email: String?, alumno: Alumno,conversacionesUsuarios: ArrayList<ConversacionUsuario>?) : super(

@@ -132,9 +132,10 @@ class CtrlAula : Observer, Observable {
                 for (j in materias_id.children) {
                     var curso_id = j.child("materia_id").getValue(String::class.java).toString();
                     clases.add(Clase(curso_id))
-                   noClases=1+noClases;
+
 
                 }
+                noClases=1+noClases;
                 data.clases = clases;
                 cursos.add(data)
 
@@ -142,6 +143,10 @@ class CtrlAula : Observer, Observable {
                     setChanged();
                     notifyObservers(cursos);
                     clearChanged();
+
+                    noClases=0
+                    noAulas=0
+                    isLoadGetAulas=true;
                 }
 
 
@@ -160,6 +165,10 @@ class CtrlAula : Observer, Observable {
             var keyMtro = p1 as String
             val myRefMtro = this.database.getReference("maestros/${keyMtro}");
             myRefMtro.child("cursos_id").push().child("curso_id").setValue(this.keyCurso);
+
+            setChanged();
+            notifyObservers("listo");
+            clearChanged();
         }
     }
 }
