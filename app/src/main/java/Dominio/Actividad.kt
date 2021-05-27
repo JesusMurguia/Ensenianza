@@ -6,7 +6,8 @@ import java.io.Serializable
 
 class Actividad : Serializable{
 
-    var nombre: String?=""
+    var titulo: String?=""
+    var subtitulo:String?=""
     var fechaInicio: String?=""
     var fechaEntrega: String?=""
     var id:String?=""
@@ -19,8 +20,9 @@ class Actividad : Serializable{
 
 
 
-    constructor(nombre: String?, fechaInicio: String?,fechaEntrega:String?,id:String?,descripcion:String?) {
-        this.nombre = nombre
+    constructor(titulo: String?,subtitulo:String?, fechaInicio: String?,fechaEntrega:String?,id:String?,descripcion:String?) {
+        this.titulo = titulo
+        this.subtitulo=subtitulo
         this.fechaInicio = fechaInicio
         this.fechaEntrega=fechaEntrega
         this.id=id

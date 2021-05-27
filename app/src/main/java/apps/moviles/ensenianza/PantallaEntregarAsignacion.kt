@@ -19,10 +19,10 @@ class PantallaEntregarAsignacion : AppCompatActivity() {
             clase=bundle.get("clase") as Clase
             actividad=bundle.get("actividad") as Actividad
 
-            et_nombreAsignacion.text=actividad.nombre
+            et_nombreAsignacion.text=actividad.subtitulo
             et_nombreMateria.text=clase.nombre
             et_nombreProfe.text=clase.nombreProfesor
-            et_asigacion_id.text=clase.idClase
+            et_asigacion_id.text=actividad.titulo
             et_descripcion.text=actividad.descripcion
             iv_icono.setImageResource(clase.icono)
         }

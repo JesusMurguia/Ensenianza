@@ -27,9 +27,10 @@ class Clase : Serializable {
 
 
 
-    constructor(nombreClase: String?, nombreProfesor: String?,icono: Int,idclase:String?) {
+    constructor(nombreClase: String?,descripcion:String?, nombreProfesor: String?,icono: Int,idclase:String?) {
 
         this.nombre = nombreClase
+        this.descripcion=descripcion
         this.nombreProfesor = nombreProfesor
         this.icono = icono
         this.idClase=idclase

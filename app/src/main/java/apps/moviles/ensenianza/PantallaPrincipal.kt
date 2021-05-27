@@ -159,16 +159,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
-                    var maestro_id=dataSnapshot.child("maestro_id").getValue(String::class.java).toString()
-                    println(maestro_id)
-
-                    var maestrosfb = rootRef.getReference("maestros/${maestro_id}")
-                maestrosfb.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-
-                        var user_id=dataSnapshot.child("user_id").getValue(String::class.java).toString()
+                        var user_id=dataSnapshot.child("maestro_id").getValue(String::class.java).toString()
                         println(user_id)
 
                         var usuariosfb = rootRef.getReference("users/${user_id}")
@@ -192,14 +183,6 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                             }
 
                         })
-
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        // Failed to read value
-                        Log.w("CodigoClases", "Failed to read value.", error.toException())
-                    }
-
-                })
 
 
             }
@@ -250,12 +233,12 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                             for (j in materias_id){
                                 if(i.key.toString()==j){
                                     println(i.key)
-                                    var c= Clase(i.child("nombre").getValue(String::class.java).toString(),maestro,R.drawable.clasewhite,i.key.toString())
+                                    var c= Clase(i.child("nombre").getValue(String::class.java).toString(),i.child("descripcion").getValue(String::class.java).toString(),maestro,R.drawable.clasewhite,i.key.toString())
 
 
                                     for (a in i.child("actividades_id").children){
-                                        actividades_id.add(a.child("actividad_id").getValue(Integer::class.java).toString())
-                                        println(a.child("actividad_id").getValue(Integer::class.java).toString())
+                                        actividades_id.add(a.child("actividad_id").getValue(String::class.java).toString())
+                                        println(a.child("actividad_id").getValue(String::class.java).toString())
                                     }
                                     clases.add(c)
                                     break

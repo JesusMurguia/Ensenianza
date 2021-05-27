@@ -51,11 +51,12 @@ class PantallaClaseDetalle : AppCompatActivity() {
                     for (i in dataSnapshot.children) {
                         for(id in ids){
                             if(i.key==id){
-                                var nombre=i.child("nombre").getValue(String::class.java).toString()
+                                var titulo=i.child("titulo").getValue(String::class.java).toString()
+                                var subtitulo=i.child("subtitulo").getValue(String::class.java).toString()
                                 var fechaEntrega=i.child("fechaEntrega").getValue(String::class.java).toString()
                                 var fechaInicio=i.child("fechaInicio").getValue(String::class.java).toString()
                                 var descripcion=i.child("descripcion").getValue(String::class.java).toString()
-                                var a=Actividad(nombre,fechaEntrega,fechaInicio,id,descripcion)
+                                var a=Actividad(titulo,subtitulo,fechaEntrega,fechaInicio,id,descripcion)
 
                                 actividades.add(a)
                             }
@@ -64,14 +65,14 @@ class PantallaClaseDetalle : AppCompatActivity() {
 
                     println(actividades.size)
                     if (actividades.size>2){
-                        tareaUrgenteBttn.text=actividades.get(0).nombre
-                        tareaNormalBttn.text=actividades.get(1).nombre
-                        tareaBttn.text=actividades.get(2).nombre
+                        tareaUrgenteBttn.text=actividades.get(0).titulo
+                        tareaNormalBttn.text=actividades.get(1).titulo
+                        tareaBttn.text=actividades.get(2).titulo
                     }else if(actividades.size>1){
-                        tareaUrgenteBttn.text=actividades.get(0).nombre
-                        tareaNormalBttn.text=actividades.get(1).nombre
+                        tareaUrgenteBttn.text=actividades.get(0).titulo
+                        tareaNormalBttn.text=actividades.get(1).titulo
                     }else if(actividades.size>0){
-                        tareaUrgenteBttn.text=actividades.get(0).nombre
+                        tareaUrgenteBttn.text=actividades.get(0).titulo
                     }
 
                 }
