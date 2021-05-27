@@ -22,7 +22,7 @@ class RecyclerAdapter(val clases: ArrayList<Clase>, val listener:View.OnClickLis
     override fun getItemCount() = clases.size;
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nombreClase.text = clases[position].nombreClase;
+        holder.nombreClase.text = clases[position].nombre;
         holder.nombreProfesor.text = clases[position].nombreProfesor;
         holder.icono.setImageResource(clases[position].icono);
 

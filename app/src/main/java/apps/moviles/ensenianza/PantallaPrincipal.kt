@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_pantalla_principal.*
-import kotlinx.android.synthetic.main.activity_pantalla_unirse_a_clase.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -275,7 +274,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                             idclase=clases[recycler.getChildAdapterPosition(it)]
                             Toast.makeText(
                                 applicationContext,
-                                "has seleccionado la claseeeee: " + clases.get(recycler.getChildAdapterPosition(it)).nombreClase,
+                                "has seleccionado la claseeeee: " + clases.get(recycler.getChildAdapterPosition(it)).nombre,
                                 Toast.LENGTH_SHORT
                             ).show();
                             var intent = Intent(applicationContext, PantallaClaseDetalle::class.java)

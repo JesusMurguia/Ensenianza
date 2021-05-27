@@ -28,4 +28,5 @@ interface iNegocio {
   fun getAlumno(activity: AppCompatActivity,key:String)
   fun crearAula(keyMaestro: String, curso: Curso);
   fun getAulas(user_id:String);
+  fun getClase(clase_id:String?,nombreMtro:String);
 }

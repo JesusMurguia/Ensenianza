@@ -1,6 +1,7 @@
 package apps.moviles.ensenianza
 
 import Dominio.Actividad
+import Dominio.Clase
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,7 @@ import java.lang.Exception
 import java.lang.reflect.Executable
 
 class PantallaClaseDetalle : AppCompatActivity() {
-    lateinit var clase:Clase
+    lateinit var clase: Clase
     var actividades=ArrayList<Actividad>()
     lateinit var ids:ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,7 @@ class PantallaClaseDetalle : AppCompatActivity() {
         if(bundle!=null){
             clase=bundle.get("clase") as Clase
             iconoClaseGeografia.setImageResource(clase.icono)
-            textMateriaGeografia.text=clase.nombreClase
+            textMateriaGeografia.text=clase.nombre
             textMtraGeografia.text=clase.nombreProfesor
             ids= bundle.get("ids") as ArrayList<String>
 

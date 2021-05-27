@@ -3,14 +3,16 @@ package Dominio
 import android.os.Parcel
 import android.os.Parcelable
 import apps.moviles.ensenianza.R
+import java.io.Serializable
 
 class Clase : Parcelable {
 
 
-    var nombreClase: String? = ""
+    var nombre: String? = ""
     var nombreProfesor: String? = ""
     var icono: Int = -1
     var idClase: String? = ""
+    lateinit var actividades:ArrayList<Asignacion>;
 
 
     constructor(clase_id: String) {
@@ -24,7 +26,7 @@ class Clase : Parcelable {
 
 
     constructor(source: Parcel) : this() {
-        nombreClase = source.readString()
+        nombre = source.readString()
         nombreProfesor = source.readString()
         icono = source.readInt()
         idClase= source.readString()
@@ -33,7 +35,7 @@ class Clase : Parcelable {
 
     constructor(nombreClase: String?, nombreProfesor: String?,icono: Int,idclase:String?) {
 
-        this.nombreClase = nombreClase
+        this.nombre = nombreClase
         this.nombreProfesor = nombreProfesor
         this.icono = icono
         this.idClase=idclase
@@ -44,7 +46,7 @@ class Clase : Parcelable {
     }
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
-        p0?.writeString(nombreClase)
+        p0?.writeString(nombre)
         p0?.writeString(nombreProfesor)
         p0?.writeInt(icono)
         p0?.writeString(idClase)

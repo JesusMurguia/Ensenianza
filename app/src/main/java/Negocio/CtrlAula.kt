@@ -48,6 +48,7 @@ class CtrlAula : Observer, Observable {
         val myRef = database.getReference("cursos").push();
         myRef.child("nombre").setValue(curso.nombre);
         myRef.child("descripcion").setValue(curso.descripcion);
+        myRef.child("maestro_id").setValue(userId);
         this.keyCurso = myRef.key.toString();
 
 
