@@ -44,9 +44,13 @@ class PantallaUnirseAClase : AppCompatActivity() {
                             println("nombre"+nombreCurso)
                             var alumnosRef = rootRef.getReference("alumnos/${alumnoKey}")
                             alumnosRef.child("curso_id").setValue(nombreCurso)
+                            alumnosRef.child("curso_key").setValue(i.key)
                             fetched=true
                             intent = Intent(applicationContext, PantallaPrincipal::class.java)
+                            intent.putExtra("curso_key",i.key)
+                            intent.putExtra("curso_id",nombreCurso)
                             startActivity(intent)
+                            finish();
 
                         }
                     }

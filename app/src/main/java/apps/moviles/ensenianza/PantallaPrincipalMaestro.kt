@@ -113,16 +113,16 @@ class PantallaPrincipalMaestro : AppCompatActivity(), Observer {
 
 
     fun cargarClases() {
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite))
-        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria))
-        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite))
-        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite,""))
+        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria,""))
+        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite,""))
+        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Ingles", "Mtra. Ana Marquez", R.drawable.ingleswhite,""))
+        clases.add(Clase("Ciencias Naturales", "Mtra. Ana Marquez", R.drawable.cienciasmateria,""))
+        clases.add(Clase("Español", "Mtra. Ana Marquez", R.drawable.libroespaniolwhite,""))
+        clases.add(Clase("Civica", "Mtra. Ana Marquez", R.drawable.civicawhite,""))
     }
 
     fun cargarInformacionPersonal() {

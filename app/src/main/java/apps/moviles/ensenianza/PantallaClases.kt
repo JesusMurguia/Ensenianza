@@ -29,15 +29,15 @@ class PantallaClases : AppCompatActivity() {
 
 
     fun cargarClases(){
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
-        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
+        clases.add(Clase("Geografia", "Mtra. Ana Marquez", R.drawable.geografiawhite,""))
     }
 }
 
