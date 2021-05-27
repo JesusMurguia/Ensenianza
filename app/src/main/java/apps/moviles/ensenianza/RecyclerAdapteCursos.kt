@@ -20,14 +20,15 @@ class RecyclerAdapterCursos (val cursos: ArrayList<Curso>, val listener:View.OnC
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterCursos.ViewHolderCurso {
         val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_cursos, parent, false);
+            .inflate(R.layout.recyclerviewaulas, parent, false);
         view.setOnClickListener(this);
         return ViewHolderCurso(view);
     }
 
     class ViewHolderCurso(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val nombreClase: TextView = itemView.findViewById(R.id.prin_nombre_clase);
+
+        val nombreClase: TextView = itemView.findViewById(R.id.prin_nombre_aula);
         val icono: ImageView = itemView.findViewById(R.id.prin_icono);
     }
 

@@ -15,6 +15,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pantalla_aulas.*
 import kotlinx.android.synthetic.main.recyclerview_cursos.view.*
+import kotlinx.android.synthetic.main.recyclerview_cursos.view.prin_icono
+import kotlinx.android.synthetic.main.recyclerview_cursos.view.prin_nombre_clase
+import kotlinx.android.synthetic.main.recyclerview_cursos.view.rlt_lyt
+import kotlinx.android.synthetic.main.recyclerviewaulas.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -83,8 +87,8 @@ class ClasesAdapterAulas : BaseAdapter {
         curso=cursos[p0]
         var inflador =
             contexto!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var vista = inflador.inflate(R.layout.recyclerview_cursos, null)
-        vista.prin_nombre_clase.setText(curso.nombre);
+        var vista = inflador.inflate(R.layout.recyclerviewaulas, null)
+        vista.prin_nombre_aula.setText(curso.nombre);
         vista.prin_icono.setImageResource(cursos[p0].icono);
         vista.rlt_lyt.setOnClickListener {
             Toast.makeText(contexto, cursos[p0].nombre, Toast.LENGTH_SHORT).show()
