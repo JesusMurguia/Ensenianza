@@ -221,7 +221,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                 if(!fetched){
                     Toast.makeText(applicationContext,"No se encontró el curso",Toast.LENGTH_SHORT).show()
                 }
-                var actividades_id=ArrayList<String>()
+
                 var materiasfb = rootRef.getReference("materias")
                 materiasfb.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -232,6 +232,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
 
                             for (j in materias_id){
                                 if(i.key.toString()==j){
+                                    var actividades_id=ArrayList<String>()
                                     println(i.key)
                                     var c= Clase(i.child("nombre").getValue(String::class.java).toString(),i.child("descripcion").getValue(String::class.java).toString(),maestro,R.drawable.clasewhite,i.key.toString())
 
@@ -240,6 +241,7 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                                         actividades_id.add(a.child("actividad_id").getValue(String::class.java).toString())
                                         println(a.child("actividad_id").getValue(String::class.java).toString())
                                     }
+                                    c.actividades=actividades_id
                                     clases.add(c)
                                     break
                                 }
@@ -261,7 +263,6 @@ class PantallaPrincipal : AppCompatActivity(), Observer {
                                 Toast.LENGTH_SHORT
                             ).show();
                             var intent = Intent(applicationContext, PantallaClaseDetalle::class.java)
-                            intent.putExtra("ids",actividades_id)
                             intent.putExtra("clase",idclase)
                             startActivity(intent)
                         });
