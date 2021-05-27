@@ -36,7 +36,7 @@ class PantallaCrearAula : AppCompatActivity(),Observer {
 
 
 
-        var maestro=intent.getParcelableExtra("usuario") as Usuario;
+        var maestro=intent.getSerializableExtra("usuario") as Usuario;
         var name_lastname="  Mtro. "+maestro.nombre+" "+maestro.lastname+"  ";
         txt_nombreProfesor.setText(name_lastname);
 

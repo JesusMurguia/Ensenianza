@@ -32,7 +32,7 @@ class PantallaAulas : AppCompatActivity(), Observer {
 
         var fachadaNegocio = Factory.crearFachadaNegocio();
 
-        usuario = intent.getParcelableExtra("usuario") as Usuario;
+        usuario = intent.getSerializableExtra("usuario") as Usuario;
 
         //  var cursos = intent.getParcelableArrayExtra("cursos") as ArrayList<Curso>
 

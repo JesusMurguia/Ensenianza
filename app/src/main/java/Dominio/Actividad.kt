@@ -2,7 +2,9 @@ package Dominio
 
 import android.os.Parcel
 import android.os.Parcelable
-class Actividad : Parcelable{
+import java.io.Serializable
+
+class Actividad : Serializable{
 
     var nombre: String?=""
 
@@ -14,21 +16,8 @@ class Actividad : Parcelable{
     var id:String?=""
     var descripcion:String?=""
 
-
     constructor(){
 
-    }
-
-
-
-    constructor(source:Parcel):this() {
-        nombre = source.readString()
-        fechaInicio = source.readString()
-        fechaEntrega= source.readString()
-        id=source.readString()
-        descripcion=source.readString()
-        titulo= source.readString()
-        subtitulo= source.readString()
     }
 
     constructor(nombre: String?, fechaInicio: String?,fechaEntrega:String?,id:String?,descripcion:String?) {
@@ -39,6 +28,7 @@ class Actividad : Parcelable{
         this.descripcion=descripcion
     }
 
+
     constructor(titulo: String?, subtitulo: String?,descripcion: String?) {
 
         this.titulo = titulo
@@ -47,27 +37,7 @@ class Actividad : Parcelable{
     }
 
 
-    override fun describeContents(): Int {
-        return 0
-    }
 
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        p0?.writeString(nombre)
-        p0?.writeString(fechaInicio)
-        p0?.writeString(fechaEntrega)
-        p0?.writeString(id)
-        p0?.writeString(descripcion)
-        p0?.writeString(titulo)
-        p0?.writeString(subtitulo)
-    }
 
-    companion object CREATOR : Parcelable.Creator<Actividad> {
-        override fun createFromParcel(parcel: Parcel): Actividad {
-            return Actividad(parcel)
-        }
 
-        override fun newArray(size: Int): Array<Actividad?> {
-            return arrayOfNulls(size)
-        }
-    }
 }

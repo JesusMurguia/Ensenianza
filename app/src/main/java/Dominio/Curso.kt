@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 
 
 @JsonIgnoreProperties(ignoreUnknown=true)
-class Curso:Parcelable{
+class Curso:Serializable{
     lateinit var nombre: String
     lateinit var code: String
     lateinit var descripcion: String
@@ -21,36 +21,8 @@ class Curso:Parcelable{
         this.descripcion=descripcion;
     }
 
-    constructor(source: Parcel) : this() {
-        nombre = source.readString().toString()
-        icono = source.readInt()
-        id= source.readString().toString()
-        descripcion=source.readString().toString();
-        clases=source.createTypedArrayList(Clase.CREATOR)!!
-    }
 
     constructor()
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        p0?.writeString(nombre)
-        p0?.writeString(descripcion)
-        p0?.writeInt(icono)
-        p0?.writeString(id)
-        p0?.writeTypedList(clases)
-    }
-
-    companion object CREATOR : Parcelable.Creator<Curso> {
-        override fun createFromParcel(parcel: Parcel): Curso {
-            return Curso(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Curso?> {
-            return arrayOfNulls(size)
-        }
-    }
 
 }
