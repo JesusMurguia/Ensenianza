@@ -7,6 +7,7 @@ class Alumno :Serializable{
     var lastname: String = ""
     var key: String? = ""
     var curso_id: String? = ""
+    var curso_key: String? = ""
 
     constructor(nombre: String, lastname: String) {
         this.nombre = nombre;
@@ -18,10 +19,11 @@ class Alumno :Serializable{
 
     }
 
-    constructor(nombre: String, lastname: String, cursoId: String, key: String) {
+    constructor(nombre: String, lastname: String, cursoId: String,curso_key:String, key: String) {
         this.nombre = nombre;
         this.lastname = lastname;
         this.curso_id = cursoId;
+        this.curso_key=curso_key
         this.key = key;
     }
 

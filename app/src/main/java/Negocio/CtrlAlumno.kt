@@ -47,6 +47,7 @@ class CtrlAlumno: Observable() {
                     dataAlumno?.nombre.toString(),
                     dataAlumno?.lastname.toString(),
                     dataAlumno?.curso_id.toString(),
+                    dataAlumno?.curso_key.toString(),
                     key
                 )
 
